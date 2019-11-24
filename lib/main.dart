@@ -4,7 +4,8 @@ import 'package:flutter/services.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-    statusBarColor: Colors.transparent
+    statusBarColor: Colors.white,
+    statusBarIconBrightness: Brightness.dark
   ));
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitDown,
@@ -20,6 +21,18 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
+        textTheme: TextTheme(
+          title: TextStyle(
+            fontWeight: FontWeight.w300,
+            color: Colors.black,
+            fontSize: 32.0
+          ),
+          button: TextStyle(
+            fontWeight: FontWeight.w400,
+            color: Colors.black,
+            fontSize: 20.0
+          )
+        ),
         primarySwatch: Colors.blue,
       ),
       home: Home(),
