@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:aurora_fruts/utils/config.dart' as config;
-import 'package:aurora_fruts/data/constants.dart' as constant;
 
 class CardSection extends StatefulWidget {
   final String description;
   final String title;
   final double flex;
   final String color;
-  CardSection({this.title, this.flex = 0.0, this.color, this.description});
+  final IconData icon;
+  CardSection({this.title, this.flex = 0.0, this.color, this.description,this.icon});
 
   @override
   _CardSectionState createState() => _CardSectionState();
@@ -39,7 +39,7 @@ class _CardSectionState extends State<CardSection> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Text('${widget.title}',
-                    style: Theme.of(context).textTheme.title),
+                    style: Theme.of(context).textTheme.overline),
                 InkWell(
                     onTap: _activateScroll,
                     child: Text('Mas ->',
@@ -60,6 +60,7 @@ class _CardSectionState extends State<CardSection> {
                     description: widget.description,
                     color: widget.color,
                     isScrolling: isScrolling,
+                    icon: widget.icon,
                   ),
                   for (int i = 0; i < 5; i++)
                     CardElement(
@@ -89,7 +90,8 @@ class CardInformation extends StatefulWidget {
   bool isScrolling;
   final String color;
   final String description;
-  CardInformation({this.color, this.description, this.isScrolling});
+  final IconData icon;
+  CardInformation({this.color, this.description, this.isScrolling, this.icon});
   @override
   _CardInformationState createState() => _CardInformationState();
 }
@@ -105,6 +107,9 @@ class _CardInformationState extends State<CardInformation> {
           boxShadow: [
             BoxShadow(color: Colors.black45, blurRadius: 3.0, spreadRadius: 1.0)
           ]),
+      child: Center(
+        child: Icon(widget.icon,size: 54.0,color: Colors.white,),
+      ),
     );
   }
 
@@ -180,7 +185,7 @@ class CardElement extends StatelessWidget {
       height: 150.0,
       width: 120 * (1 + flex),
       decoration: BoxDecoration(
-          color: config.convertColor(color).withOpacity(0.7),
+          color: config.convertColor(color).withOpacity(0.5),
           borderRadius: BorderRadius.circular(12.0)),
     );
   }

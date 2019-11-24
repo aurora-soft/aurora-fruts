@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-    statusBarColor: Colors.white.withOpacity(0.5),
+    statusBarColor: Colors.white.withOpacity(0.0),
     statusBarIconBrightness: Brightness.dark
   ));
   SystemChrome.setPreferredOrientations([
@@ -25,12 +25,18 @@ class MyApp extends StatelessWidget {
           title: TextStyle(
             fontWeight: FontWeight.w300,
             color: Colors.black,
-            fontSize: 32.0
+            fontSize: 32.0,
           ),
           button: TextStyle(
             fontWeight: FontWeight.w400,
             color: Colors.black,
             fontSize: 20.0
+          ),
+          overline: TextStyle(
+            fontFamily: 'Helvetica',
+            letterSpacing: 0.0,
+            color: Colors.grey[500],
+            fontSize: 24.0
           )
         ),
         primarySwatch: Colors.blue,

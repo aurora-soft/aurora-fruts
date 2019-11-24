@@ -43,8 +43,12 @@ class _HomeState extends State<Home> {
             Colors.transparent,
             Colors.white.withOpacity(0.3),
             Colors.white.withOpacity(0.7),
+            Colors.white.withOpacity(0.9),
             Colors.white
           ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
+          child: Center(child: Text('Circus Food',style: TextStyle(
+            fontFamily: 'Helvetica',fontSize: 42.0,
+          ),),),
         )
       ],
     );
@@ -75,10 +79,10 @@ class _HomeState extends State<Home> {
             child: BottomNavigationBar(
                 onTap: (picker) => _changePicker(picker),
                 currentIndex: _picker,
-                selectedItemColor: Colors.blue,
-                selectedLabelStyle: TextStyle(color: Colors.blue),
-                unselectedItemColor: Colors.black,
-                unselectedLabelStyle: TextStyle(color: Colors.black),
+                selectedItemColor: Colors.black,
+                selectedLabelStyle: TextStyle(color: Colors.black,fontSize: 14.0),
+                unselectedItemColor: Colors.grey[500],
+                unselectedLabelStyle: TextStyle(color: Colors.grey[600]),
                 items: [
                   for (int i = 0; i < constant.iconsNavigationBar.length; i++)
                     BottomNavigationBarItem(
@@ -110,9 +114,11 @@ class HomeContent extends StatelessWidget {
                     flex: 0.5,
                     color: constant.colorsListCards[i % 3],
                     description: constant.informationCardsSection[i],
+                    icon: constant.iconCardSection[i],
                   )
                 else
                   CardSection(
+                    icon: constant.iconCardSection[i],
                     title: constant.cardsSectionTitles[i],
                     color: constant.colorsListCards[i % 3],
                     description: constant.informationCardsSection[i],
