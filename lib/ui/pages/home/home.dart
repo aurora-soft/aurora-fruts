@@ -26,13 +26,42 @@ class _HomeState extends State<Home> {
     Container()
   ];
 
+  Widget _background() {
+    return Stack(
+      children: <Widget>[
+        Container(
+            height: 200.0,
+            decoration: BoxDecoration(
+                image: DecorationImage(
+              image: AssetImage('assets/images/fruits.jpg'),
+              fit: BoxFit.cover,
+            ))),
+        Container(
+          height: 200.0,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Colors.transparent,Colors.white.withOpacity(0.5),Colors.white],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter
+            )
+          ),
+        )
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Column(
+        body: Stack(
           children: <Widget>[
-            SizedBox(height: MediaQuery.of(context).padding.top),
-            _bodyItems[_picker]
+            _background(),
+            Column(
+              children: <Widget>[
+                SizedBox(height: MediaQuery.of(context).padding.top),
+                _bodyItems[_picker]
+              ],
+            ),
           ],
         ),
         bottomNavigationBar: SizedBox(
@@ -63,7 +92,7 @@ class HomeContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
+      //color: Colors.white,
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height - 84.0,
       child: Padding(
@@ -73,6 +102,7 @@ class HomeContent extends StatelessWidget {
           scrollDirection: Axis.vertical,
           child: Column(
             children: <Widget>[
+              SizedBox(height: 90.0),
               for (int i = 0; i < constant.cardsSectionTitles.length; i++)
                 if (constant.cardsSectionTitles[i] == 'Categorias')
                   CardSection(title: constant.cardsSectionTitles[i], flex: 0.5)
