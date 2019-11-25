@@ -29,8 +29,8 @@ class MyApp extends StatelessWidget {
           ),
           button: TextStyle(
             fontWeight: FontWeight.w400,
-            color: Colors.black,
-            fontSize: 20.0
+            color: Colors.black54,
+            fontSize: 16.0
           ),
           overline: TextStyle(
             fontFamily: 'Helvetica',
