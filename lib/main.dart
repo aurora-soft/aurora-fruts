@@ -33,10 +33,11 @@ class MyApp extends StatelessWidget {
             fontSize: 16.0
           ),
           overline: TextStyle(
-            fontFamily: 'Helvetica',
+            //fontFamily: 'Helvetica',
             letterSpacing: 0.0,
-            color: Colors.grey[500],
-            fontSize: 24.0
+            color: Colors.black,
+            fontSize: 22.0,
+            fontWeight: FontWeight.w500
           )
         ),
         primarySwatch: Colors.blue,
