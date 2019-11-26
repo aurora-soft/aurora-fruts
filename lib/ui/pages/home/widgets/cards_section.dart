@@ -4,11 +4,9 @@ import 'package:aurora_fruts/utils/config.dart' as config;
 class CardSection extends StatefulWidget {
   final String description;
   final String title;
-  final double flex;
   final String color;
   final IconData icon;
-  CardSection(
-      {this.title, this.flex = 0.0, this.color, this.description, this.icon});
+  CardSection({this.title, this.color, this.description, this.icon});
 
   @override
   _CardSectionState createState() => _CardSectionState();
@@ -35,17 +33,20 @@ class _CardSectionState extends State<CardSection> {
         children: <Widget>[
           SizedBox(
             height: 50,
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Text('${widget.title}',
-                    style: Theme.of(context).textTheme.overline),
-                InkWell(
-                    onTap: _activateScroll,
-                    child: Text(isScrolling ? 'Ver todo' : 'Más',
-                        style: Theme.of(context).textTheme.button)),
-              ],
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Text('${widget.title}',
+                      style: Theme.of(context).textTheme.overline),
+                  InkWell(
+                      onTap: _activateScroll,
+                      child: Text(isScrolling ? 'Ver todo' : 'Más',
+                          style: Theme.of(context).textTheme.button)),
+                ],
+              ),
             ),
           ),
           Expanded(
@@ -57,6 +58,7 @@ class _CardSectionState extends State<CardSection> {
               scrollDirection: Axis.horizontal,
               child: Row(
                 children: <Widget>[
+                  SizedBox(width: 16.0),
                   CardInformation(
                     description: widget.description,
                     color: widget.color,
@@ -68,22 +70,13 @@ class _CardSectionState extends State<CardSection> {
                   ),
                   for (int i = 0; i < 5; i++)
                     CardElement(
-                      flex: widget.flex,
                       color: widget.color,
-                    )
+                    ),
+                  SizedBox(width: 8.0),
                 ],
               ),
             ),
           )
-          /*
-          ListView.builder(
-            physics: BouncingScrollPhysics(),
-            scrollDirection: Axis.horizontal,
-            itemCount: 5,
-            itemBuilder: (context,item){
-              return CardElement();
-            },
-          ) */
         ],
       ),
     );
@@ -136,14 +129,12 @@ class _CardInformationState extends State<CardInformation> {
       width: MediaQuery.of(context).size.width,
       height: 150.0,
       decoration: BoxDecoration(
-          boxShadow: [
-            BoxShadow(
-                color: Colors.black26, blurRadius: 15.0, spreadRadius: 0.1)
-          ],
-          //border: Border.all(
-          //  color: config.convertColor(widget.color).withOpacity(1)),
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(12.0)),
+        boxShadow: [
+          BoxShadow(color: Colors.black26, blurRadius: 15.0, spreadRadius: 0.1)
+        ],
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12.0),
+      ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
@@ -154,9 +145,14 @@ class _CardInformationState extends State<CardInformation> {
           ),
           Align(
               alignment: Alignment.bottomCenter,
-              child: Text(
-                'Descubrir',
-                style: TextStyle(color: Colors.blue[800], fontSize: 16.0),
+              child: InkWell(
+                onTap: () {
+                  //TODO: go to list section screen
+                },
+                child: Text(
+                  'Descubrir',
+                  style: TextStyle(color: Colors.blue[800], fontSize: 16.0),
+                ),
               ))
         ],
       ),
@@ -188,18 +184,22 @@ class _CardInformationState extends State<CardInformation> {
 }
 
 class CardElement extends StatelessWidget {
-  final double flex;
   final String color;
-  CardElement({this.flex, this.color});
+  CardElement({this.color});
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(right: 8.0),
-      height: 150.0,
-      width: 120 * (1 + flex),
-      decoration: BoxDecoration(
-          color: config.convertColor(color).withOpacity(0.5),
-          borderRadius: BorderRadius.circular(12.0)),
+    return InkWell(
+      onTap: () {
+        //TODO: go to product details screen
+      },
+      child: Container(
+        margin: EdgeInsets.only(right: 8.0),
+        height: 150.0,
+        width: 120,
+        decoration: BoxDecoration(
+            color: config.convertColor(color).withOpacity(0.5),
+            borderRadius: BorderRadius.circular(12.0)),
+      ),
     );
   }
 }
