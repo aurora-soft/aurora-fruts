@@ -29,6 +29,7 @@ class _HomeState extends State<Home> {
   ];
 
   Widget _search() {
+    //TODO: change to search function
     return Container(
       padding: EdgeInsets.all(8.0),
       decoration: BoxDecoration(

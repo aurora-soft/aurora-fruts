@@ -38,6 +38,10 @@ class MyApp extends StatelessWidget {
             color: Colors.black,
             fontSize: 22.0,
             fontWeight: FontWeight.w500
+          ),
+          display1: TextStyle(
+            fontSize: 24.0,
+            color: Colors.black
           )
         ),
         primarySwatch: Colors.blue,
