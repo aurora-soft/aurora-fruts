@@ -1,6 +1,8 @@
 import 'package:aurora_fruts/ui/pages/home/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:aurora_fruts/data/constants.dart' as constant;
+import 'package:aurora_fruts/utils/config.dart'as config;
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
@@ -21,6 +23,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
+        primaryColor: config.convertColor(constant.colors['primary']),
         textTheme: TextTheme(
           title: TextStyle(
             fontWeight: FontWeight.w300,

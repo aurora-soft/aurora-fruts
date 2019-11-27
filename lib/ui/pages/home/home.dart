@@ -4,42 +4,57 @@ import 'package:flutter/material.dart';
 import 'package:aurora_fruts/data/constants.dart' as constant;
 import 'package:aurora_fruts/ui/pages/home/widgets/cards_section.dart';
 import 'package:aurora_fruts/data/example/card_section.dart' as section;
+import 'package:aurora_fruts/utils/config.dart' as config;
 
-class Home extends StatefulWidget {
+class Home extends StatelessWidget {
   @override
-  _HomeState createState() => _HomeState();
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: CupertinoTheme(
+        data: CupertinoThemeData(
+            primaryColor: config.convertColor(constant.colors['primary'])),
+        child: CupertinoTabScaffold(
+          tabBar: CupertinoTabBar(
+            backgroundColor: CupertinoColors.white,
+            items: [
+              for (int i = 0; i < constant.iconsNavigationBar.length; i++)
+                BottomNavigationBarItem(
+                    icon: Icon(constant.iconsNavigationBar[i]),
+                    title: Text(constant.textNavigationBar[i]))
+            ],
+          ),
+          tabBuilder: (context, index) {
+            return CupertinoTabView(
+              builder: (context) {
+                switch (index) {
+                  case 0:
+                    return HomeContent();
+                    break;
+                  case 1:
+                    return Container();
+                    break;
+                  case 2:
+                    return Container();
+                    break;
+                  case 3:
+                    return Container();
+                    break;
+                  default:
+                    return Container();
+                    break;
+                }
+              },
+            );
+          },
+        ),
+      ),
+    );
+  }
 }
 
-class _HomeState extends State<Home> {
-  int _picker;
-  bool _haveSearch;
-
-  @override
-  void initState() {
-    super.initState();
-    _haveSearch = true;
-    _picker = 0;
-  }
-
-  void _changePicker(picker) {
-    setState(() {
-      _picker = picker;
-      if (_picker == 0) {
-        _haveSearch = true;
-      } else {
-        _haveSearch = false;
-      }
-    });
-  }
-
-  List<Widget> _bodyItems = <Widget>[
-    HomeContent(),
-    Container(),
-    Container(),
-    Container()
-  ];
-
-  Widget _search() {
+class HomeContent extends StatelessWidget {
+  Widget _search(BuildContext context) {
     //TODO: change to search function
     return Container(
       padding: EdgeInsets.all(8.0),
@@ -70,7 +85,7 @@ class _HomeState extends State<Home> {
     );
   }
 
-  Widget _background() {
+  Widget _background(BuildContext context) {
     return Stack(
       children: <Widget>[
         Container(
@@ -106,7 +121,8 @@ class _HomeState extends State<Home> {
         Container(
           margin: EdgeInsets.symmetric(horizontal: 16.0),
           height: 190.0,
-          child: Align(alignment: Alignment.bottomCenter, child: _search()),
+          child:
+              Align(alignment: Alignment.bottomCenter, child: _search(context)),
         )
       ],
     );
@@ -114,73 +130,39 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: Colors.white,
-        body: Stack(
-          children: <Widget>[
-            _haveSearch ? _background() : SizedBox(),
-            _bodyItems[_picker]
-          ],
-        ),
-        bottomNavigationBar: SizedBox(
-          height: 56.0,
-          child: Theme(
-            data: Theme.of(context).copyWith(
-              canvasColor: Colors.white,
-            ),
-            child: BottomNavigationBar(
-                onTap: (picker) => _changePicker(picker),
-                currentIndex: _picker,
-                selectedItemColor: Colors.black,
-                selectedLabelStyle:
-                    TextStyle(color: Colors.black, fontSize: 14.0),
-                unselectedItemColor: Colors.grey[500],
-                unselectedLabelStyle: TextStyle(color: Colors.grey[600]),
-                items: [
-                  for (int i = 0; i < constant.iconsNavigationBar.length; i++)
-                    BottomNavigationBarItem(
-                        icon: Icon(constant.iconsNavigationBar[i]),
-                        title: Text(constant.textNavigationBar[i]))
-                ]),
-          ),
-        ));
-  }
-}
-
-class HomeContent extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Column(
+    return Stack(
       children: <Widget>[
-        SizedBox(height: MediaQuery.of(context).padding.top),
-        SizedBox(height: 165.0),
-        Container(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height - 84.0 - 165,
-          child: Padding(
-            padding: EdgeInsets.only(left: 0.0, right: 0.0),
-            child: SingleChildScrollView(
-              physics: BouncingScrollPhysics(),
-              scrollDirection: Axis.vertical,
-              child: Column(
-                children: <Widget>[
-                  for (int i = 0; i < section.cardsSectionTitles.length; i++)
-                    if (section.cardsSectionTitles[i] == 'Categorías')
-                      CardSectionCategories(
-                        title: section.cardsSectionTitles[i],
-                      )
-                    else
-                      CardSection(
-                        icon: section.iconCardSection[i],
-                        title: section.cardsSectionTitles[i],
-                        color: section.colorsListCards[i % 4],
-                        description: section.informationCardsSection[i],
-                      )
-                ],
+        _background(context),
+        Column(
+          children: <Widget>[
+            SizedBox(height: MediaQuery.of(context).padding.top),
+            SizedBox(height: 165.0),
+            Container(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height - 78.0 - 165,
+              child: SingleChildScrollView(
+                physics: BouncingScrollPhysics(),
+                scrollDirection: Axis.vertical,
+                child: Column(
+                  children: <Widget>[
+                    for (int i = 0; i < section.cardsSectionTitles.length; i++)
+                      if (section.cardsSectionTitles[i] == 'Categorías')
+                        CardSectionCategories(
+                          title: section.cardsSectionTitles[i],
+                        )
+                      else
+                        CardSection(
+                          icon: section.iconCardSection[i],
+                          title: section.cardsSectionTitles[i],
+                          color: section.colorsListCards[i % 4],
+                          description: section.informationCardsSection[i],
+                        )
+                  ],
+                ),
               ),
             ),
-          ),
-        ),
+          ],
+        )
       ],
     );
   }
