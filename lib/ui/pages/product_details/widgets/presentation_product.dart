@@ -1,5 +1,6 @@
 import 'package:aurora_fruts/models/product.dart';
 import 'package:flutter/material.dart';
+import 'package:aurora_fruts/ui/common_widgets/snackbar.dart' as snackbar;
 
 class PresentationProduct extends StatelessWidget {
   final Product product;
@@ -57,6 +58,31 @@ class PresentationProduct extends StatelessWidget {
                     icon: Icon(
                       Icons.favorite_border,
                       color: Colors.grey,
+                      size: 32.0,
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                top: 0.0,
+                right: 0.0,
+                child: Container(
+                  width: 60.0,
+                  height: 60.0,
+                  decoration: BoxDecoration(
+                      borderRadius:
+                          BorderRadius.only(bottomLeft: Radius.circular(35.0)),
+                      color: Colors.black45),
+                  child: IconButton(
+                    onPressed: () {
+                      snackbar.showSnackBar(
+                          context: context,
+                          color: Theme.of(context).accentColor,
+                          title: 'Producto añadido al carrito');
+                    },
+                    icon: Icon(
+                      Icons.add_shopping_cart,
+                      color: Colors.white,
                       size: 32.0,
                     ),
                   ),

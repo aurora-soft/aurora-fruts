@@ -30,7 +30,7 @@ class _CardSectionState extends State<CardSection> {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 8.0),
-      height: 225.0,
+      height: 200.0,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
@@ -71,10 +71,10 @@ class _CardSectionState extends State<CardSection> {
                       setState(() => isScrolling = activate);
                     },
                   ),
-                  for (int i = 0; i < 5; i++)
+                  for (int i = 0; i < proex.products.length; i++)
                     CardElement(
                       color: widget.color,
-                      product: proex.productExample,
+                      product: proex.products[i],
                     ),
                   SizedBox(width: 8.0),
                 ],
@@ -193,33 +193,44 @@ class CardElement extends StatelessWidget {
   CardElement({this.color, this.product});
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () => Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => ProductDetails(product: product))),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Container(
-            margin: EdgeInsets.only(right: 8.0),
-            height: 110.0,
-            width: 110,
-            decoration: BoxDecoration(
+    return Container(
+      width: 110.0,
+      margin: EdgeInsets.only(right: 8.0),
+      child: InkWell(
+        onTap: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => ProductDetails(product: product))),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Container(
+              height: 110.0,
+              width: 110,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8.0),
                 color: config.convertColor(color).withOpacity(0.5),
-                borderRadius: BorderRadius.circular(8.0)),
-          ),
-          SizedBox(height: 4.0),
-          Text(
-            "${product.name[0].toUpperCase()}${product.name.substring(1)}",
-            style: TextStyle(fontSize: 15.0),
-          ),
-          Text(
-            "${product.provider[0].toUpperCase()}${product.provider.substring(1)}",
-            style: TextStyle(color: Colors.grey, fontSize: 12.0),
-          )
-        ],
+              ),
+              child: ClipRRect(
+                  borderRadius: BorderRadius.circular(8.0),
+                  child: Image.network(
+                    product.images[0],
+                    fit: BoxFit.cover,
+                  )),
+            ),
+            SizedBox(height: 4.0),
+            Text(
+              "${product.name[0].toUpperCase()}${product.name.substring(1)}",
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(fontSize: 15.0),
+            ),
+            Text(
+              "${product.provider[0].toUpperCase()}${product.provider.substring(1)}",
+              style: TextStyle(color: Colors.grey, fontSize: 12.0),
+            )
+          ],
+        ),
       ),
     );
   }

@@ -1,3 +1,4 @@
+import 'package:aurora_fruts/ui/pages/cart/cart.dart';
 import 'package:aurora_fruts/ui/pages/home/widgets/cards_section_categories.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -35,7 +36,7 @@ class Home extends StatelessWidget {
                     return Container();
                     break;
                   case 2:
-                    return Container();
+                    return CartView();
                     break;
                   case 3:
                     return Container();
