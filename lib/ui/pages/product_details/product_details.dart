@@ -1,6 +1,7 @@
 import 'package:aurora_fruts/models/product.dart';
 import 'package:aurora_fruts/ui/pages/product_details/widgets/aditional_information.dart';
 import 'package:aurora_fruts/ui/pages/product_details/widgets/presentation_product.dart';
+import 'package:aurora_fruts/ui/pages/product_details/widgets/reviews_user.dart';
 import 'package:flutter/material.dart';
 
 class ProductDetails extends StatelessWidget {
@@ -33,7 +34,7 @@ class ProductDetails extends StatelessWidget {
                         "${product.name[0].toUpperCase()}${product.name.substring(1)}",
                         style: Theme.of(context).textTheme.display1,
                       ),
-                      Text("${product.provider}",
+                      Text("por ${product.provider}",
                           style: TextStyle(color: Colors.grey))
                     ],
                   ),
@@ -46,10 +47,18 @@ class ProductDetails extends StatelessWidget {
         padding: EdgeInsets.all(0.0),
         physics: BouncingScrollPhysics(),
         scrollDirection: Axis.vertical,
-              child: Column(
+        child: Column(
           children: <Widget>[
-            Container(height: MediaQuery.of(context).size.height/2, child: PresentationProduct(product: product)),
-            Container(height: MediaQuery.of(context).size.height/2, child: AditionalInformation(product: product,))
+            Container(
+                height: MediaQuery.of(context).size.height * 0.5,
+                child: PresentationProduct(product: product)),
+            Container(
+                height: MediaQuery.of(context).size.height * 0.5,
+                child: AditionalInformation(product: product)),
+            Container(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height * 0.5,
+                child: ReviewsUser())
           ],
         ),
       ),
