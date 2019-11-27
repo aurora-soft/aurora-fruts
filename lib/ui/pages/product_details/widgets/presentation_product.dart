@@ -91,7 +91,7 @@ class Rating extends StatelessWidget {
   Widget _rating(BuildContext context) {
     return Column(
       children: <Widget>[
-        Text('Puntaje', style: Theme.of(context).textTheme.overline),
+        //Text('Puntaje', style: Theme.of(context).textTheme.overline),
         Row(
           children: <Widget>[
             Icon(Icons.star, color: Colors.yellow[700]),
@@ -112,7 +112,7 @@ class Rating extends StatelessWidget {
   Widget _price(BuildContext context) {
     return Column(
       children: <Widget>[
-        Text('Precio', style: Theme.of(context).textTheme.overline),
+        //Text('Precio', style: Theme.of(context).textTheme.overline),
         RichText(
           text: TextSpan(
             style: DefaultTextStyle.of(context).style,
