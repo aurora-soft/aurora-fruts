@@ -2,6 +2,8 @@ import 'package:aurora_fruts/models/cart.dart';
 import 'package:aurora_fruts/models/product.dart';
 import 'package:flutter/material.dart';
 import 'package:aurora_fruts/data/example/cart_example.dart' as carex;
+import 'package:aurora_fruts/utils/config.dart'as config;
+import 'package:aurora_fruts/data/constants.dart'as constant;
 
 class CartView extends StatefulWidget {
   @override
@@ -34,6 +36,31 @@ class _CartViewState extends State<CartView> {
   void initState() {
     super.initState();
     total = 0;
+  }
+
+  Widget _confirmationButton(){
+    return Container(
+      margin: EdgeInsets.only(right: 8.0),
+      height: 50.0,
+      width: MediaQuery.of(context).size.width-32,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(8.0),
+        color: Theme.of(context).accentColor.withOpacity(0.9),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey[400],
+            blurRadius: 5.0,
+            spreadRadius: 2.0
+          )
+        ]
+      ),
+      child: Center(
+        child: Text('Confirmar compra'.toUpperCase(),style: TextStyle(
+          color: Colors.white,
+          fontSize: 20.0,
+        ),),
+      ),
+    );
   }
 
   @override
@@ -112,10 +139,16 @@ class _CartViewState extends State<CartView> {
                             fontWeight: FontWeight.bold),
                       ),
                     ),
-                  )
+                  ),
                 ],
               ),
-            )
+            ),
+            SizedBox(
+              height: 150.0,
+              width: MediaQuery.of(context).size.width,
+              child: Center(
+              child: _confirmationButton(),
+            ),)
           ],
         ),
       ),
