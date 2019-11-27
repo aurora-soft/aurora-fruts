@@ -33,16 +33,12 @@ class _HomeState extends State<Home> {
     return Container(
       padding: EdgeInsets.all(8.0),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(32.0),
-        color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey[400],
-            blurRadius: 5.0,
-            spreadRadius: 1.0
-          )
-        ]
-      ),
+          borderRadius: BorderRadius.circular(32.0),
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+                color: Colors.grey[400], blurRadius: 5.0, spreadRadius: 1.0)
+          ]),
       height: 50.0,
       width: MediaQuery.of(context).size.width,
       child: Row(
@@ -74,23 +70,24 @@ class _HomeState extends State<Home> {
               fit: BoxFit.cover,
             ))),
         Container(
-          padding: EdgeInsets.only(bottom: 15.0),
+          padding: EdgeInsets.only(bottom: 35.0),
           height: 215.0,
           decoration: BoxDecoration(
             gradient: LinearGradient(colors: [
               Colors.transparent,
-              Colors.white.withOpacity(0.3),
+              Colors.white.withOpacity(0.5),
               Colors.white.withOpacity(0.7),
-              Colors.white.withOpacity(0.9),
+              Colors.white.withOpacity(0.8),
               Colors.white
             ], begin: Alignment.topCenter, end: Alignment.bottomCenter),
           ),
           child: Center(
             child: Text(
-              'Joice Food',
+              'Ametis Food',
               style: TextStyle(
-                fontFamily: 'Helvetica',
+                fontFamily: 'Pacifico-Regular',
                 fontSize: 42.0,
+                color: Colors.black87,
               ),
             ),
           ),
