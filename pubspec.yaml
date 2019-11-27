@@ -47,6 +47,9 @@ flutter:
         - asset: assets/fonts/Helvetica.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
+    - family: DetailsDescriptionIcons
+      fonts:
+        - asset: assets/fonts/details_description.ttf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
