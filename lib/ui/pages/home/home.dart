@@ -12,14 +12,25 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int _picker;
+  bool _haveSearch;
 
   @override
   void initState() {
     super.initState();
+    _haveSearch = true;
     _picker = 0;
   }
 
-  void _changePicker(picker) => setState(() => _picker = picker);
+  void _changePicker(picker) {
+    setState(() {
+      _picker = picker;
+      if (_picker == 0) {
+        _haveSearch = true;
+      } else {
+        _haveSearch = false;
+      }
+    });
+  }
 
   List<Widget> _bodyItems = <Widget>[
     HomeContent(),
@@ -107,14 +118,8 @@ class _HomeState extends State<Home> {
         backgroundColor: Colors.white,
         body: Stack(
           children: <Widget>[
-            _background(),
-            Column(
-              children: <Widget>[
-                SizedBox(height: MediaQuery.of(context).padding.top),
-                SizedBox(height: 165.0),
-                _bodyItems[_picker]
-              ],
-            ),
+            _haveSearch ? _background() : SizedBox(),
+            _bodyItems[_picker]
           ],
         ),
         bottomNavigationBar: SizedBox(
@@ -145,32 +150,38 @@ class _HomeState extends State<Home> {
 class HomeContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height - 84.0 - 165,
-      child: Padding(
-        padding: EdgeInsets.only(left: 0.0, right: 0.0),
-        child: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
-          scrollDirection: Axis.vertical,
-          child: Column(
-            children: <Widget>[
-              for (int i = 0; i < section.cardsSectionTitles.length; i++)
-                if (section.cardsSectionTitles[i] == 'Categorías')
-                  CardSectionCategories(
-                    title: section.cardsSectionTitles[i],
-                  )
-                else
-                  CardSection(
-                    icon: section.iconCardSection[i],
-                    title: section.cardsSectionTitles[i],
-                    color: section.colorsListCards[i % 4],
-                    description: section.informationCardsSection[i],
-                  )
-            ],
+    return Column(
+      children: <Widget>[
+        SizedBox(height: MediaQuery.of(context).padding.top),
+        SizedBox(height: 165.0),
+        Container(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height - 84.0 - 165,
+          child: Padding(
+            padding: EdgeInsets.only(left: 0.0, right: 0.0),
+            child: SingleChildScrollView(
+              physics: BouncingScrollPhysics(),
+              scrollDirection: Axis.vertical,
+              child: Column(
+                children: <Widget>[
+                  for (int i = 0; i < section.cardsSectionTitles.length; i++)
+                    if (section.cardsSectionTitles[i] == 'Categorías')
+                      CardSectionCategories(
+                        title: section.cardsSectionTitles[i],
+                      )
+                    else
+                      CardSection(
+                        icon: section.iconCardSection[i],
+                        title: section.cardsSectionTitles[i],
+                        color: section.colorsListCards[i % 4],
+                        description: section.informationCardsSection[i],
+                      )
+                ],
+              ),
+            ),
           ),
         ),
-      ),
+      ],
     );
   }
 }
