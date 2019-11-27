@@ -4,6 +4,6 @@
 
     <!-- TODO: change image asset -->
     <item>
-        <bitmap android:gravity="center" android:src="@mipmap/launch_image" />
+        <bitmap android:gravity="center" android:src="@mipmap/ametis" />
     </item>
 </layer-list>
