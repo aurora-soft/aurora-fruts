@@ -2,8 +2,6 @@ import 'package:aurora_fruts/models/cart.dart';
 import 'package:aurora_fruts/models/product.dart';
 import 'package:flutter/material.dart';
 import 'package:aurora_fruts/data/example/cart_example.dart' as carex;
-import 'package:aurora_fruts/utils/config.dart'as config;
-import 'package:aurora_fruts/data/constants.dart'as constant;
 
 class CartView extends StatefulWidget {
   @override
@@ -40,7 +38,6 @@ class _CartViewState extends State<CartView> {
 
   Widget _confirmationButton(){
     return Container(
-      margin: EdgeInsets.only(right: 8.0),
       height: 50.0,
       width: MediaQuery.of(context).size.width-32,
       decoration: BoxDecoration(
@@ -55,9 +52,9 @@ class _CartViewState extends State<CartView> {
         ]
       ),
       child: Center(
-        child: Text('Confirmar compra'.toUpperCase(),style: TextStyle(
+        child: Text('Enviar y ordenar',style: TextStyle(
           color: Colors.white,
-          fontSize: 20.0,
+          fontSize: 18.0,
         ),),
       ),
     );
@@ -74,7 +71,8 @@ class _CartViewState extends State<CartView> {
       color: Colors.white,
       padding: EdgeInsets.only(
           top: MediaQuery.of(context).padding.top + 24.0,
-          left: 8.0,
+          left: 16.0,
+          right: 16.0,
           bottom: 8.0),
       child: SingleChildScrollView(
         child: Column(
@@ -114,10 +112,7 @@ class _CartViewState extends State<CartView> {
             ),
             SizedBox(
               height: 32.0,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: Row(
+            ),Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
@@ -142,7 +137,7 @@ class _CartViewState extends State<CartView> {
                   ),
                 ],
               ),
-            ),
+            
             SizedBox(
               height: 150.0,
               width: MediaQuery.of(context).size.width,
@@ -179,7 +174,7 @@ class ItemCart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.symmetric(vertical:8.0),
       child: Row(
         children: <Widget>[
           _imageProduct(),
