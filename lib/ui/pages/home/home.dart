@@ -141,7 +141,7 @@ class HomeContent extends StatelessWidget {
             SizedBox(height: 165.0),
             Container(
               width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height - 78.0 - 165,
+              height: MediaQuery.of(context).size.height - 78.0 - 166,
               child: SingleChildScrollView(
                 physics: BouncingScrollPhysics(),
                 scrollDirection: Axis.vertical,
