@@ -12,7 +12,7 @@ class CardList extends StatelessWidget {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(4.0),
         child: SizedBox(
-            height: 100.0,
+            height: 98.0,
             width: 100.0,
             child: Image.network(link, fit: BoxFit.cover)),
       ),
@@ -22,7 +22,7 @@ class CardList extends StatelessWidget {
   Widget _listImages(BuildContext context) {
     List<Product> _productList = favourite.productos.values.toList();
     return Padding(
-      padding: EdgeInsets.only(top: 16.0,bottom: 8.0),
+      padding: EdgeInsets.only(top: 16.0, bottom: 8.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
