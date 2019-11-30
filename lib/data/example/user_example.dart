@@ -16,15 +16,17 @@ List<String> menuTags = [
   'Billetera',
   'Amigos',
   'Promociones',
+  '¿Te gustaría ofrecer un producto?',
   'Configuraciones',
-  'Acerca de'
+  'Acerca de',
 ];
 
 List<IconData> iconsMenu = [
-  Icons.favorite_border,
+  Icons.favorite,
   Icons.credit_card,
   Icons.people,
   Icons.local_offer,
+  Icons.store_mall_directory,
   Icons.settings,
   Icons.info
 ];

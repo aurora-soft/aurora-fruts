@@ -1,3 +1,5 @@
+import 'package:aurora_fruts/ui/pages/categories/categories.dart';
+import 'package:aurora_fruts/ui/pages/list_products/list_products.dart';
 import 'package:flutter/material.dart';
 import 'package:aurora_fruts/data/example/card_section.dart' as section;
 
@@ -27,10 +29,16 @@ class CardSectionCategories extends StatelessWidget {
                   Text('$title', style: Theme.of(context).textTheme.overline),
                   InkWell(
                       onTap: () {
-                        //TODO: go to screen categories
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Categories()));
                       },
-                      child: Text('Ver todo',
-                          style: Theme.of(context).textTheme.button)),
+                      child: SizedBox(
+                        height: 25.0,
+                        child: Text('Ver todo',
+                            style: Theme.of(context).textTheme.button),
+                      )),
                 ],
               ),
             ),
@@ -68,9 +76,8 @@ class CardElementCategories extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        //TODO: go to categorie list screen
-      },
+      onTap: () => Navigator.push(
+          context, MaterialPageRoute(builder: (context) => ListProducts(title: title,color: color,))),
       child: Container(
         margin: EdgeInsets.only(right: 8.0),
         padding: EdgeInsets.all(8.0),

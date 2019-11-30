@@ -65,7 +65,7 @@ class CardList extends StatelessWidget {
                   style: DefaultTextStyle.of(context).style,
                   children: [
                     TextSpan(
-                        text: 'Productos\t\t',
+                        text: 'Productos:\t\t',
                         style: TextStyle(
                             color: Colors.grey[600],
                             fontSize: 20.0,

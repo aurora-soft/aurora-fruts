@@ -5,7 +5,7 @@ import 'package:aurora_fruts/ui/common_widgets/titlesBar.dart';
 import 'package:aurora_fruts/data/example/favourites_example.dart' as fex;
 
 class Favorites extends StatelessWidget {
-  List<Favourites> _lists = fex.listFavourites;
+  static List<Favourites> _lists = fex.listFavourites;
 
   Widget _addListsButton(BuildContext context) {
     return InkWell(

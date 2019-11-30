@@ -1,5 +1,5 @@
-import 'package:aurora_fruts/models/product.dart';
-import 'package:aurora_fruts/ui/pages/product_details/product_details.dart';
+import 'package:aurora_fruts/ui/common_widgets/card_element.dart';
+import 'package:aurora_fruts/ui/pages/list_products/list_products.dart';
 import 'package:flutter/material.dart';
 import 'package:aurora_fruts/utils/config.dart' as config;
 import 'package:aurora_fruts/data/example/products.dart' as proex;
@@ -24,7 +24,20 @@ class _CardSectionState extends State<CardSection> {
     isScrolling = false;
   }
 
-  void _activateScroll() => setState(() => isScrolling = true);
+  void _activateScroll() {
+    if (isScrolling) {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => ListProducts(
+                    title: widget.title,
+                    color: config.convertColor(widget.color),
+                  )));
+    }
+    setState(() {
+      isScrolling = true;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,8 +59,13 @@ class _CardSectionState extends State<CardSection> {
                       style: Theme.of(context).textTheme.overline),
                   InkWell(
                       onTap: _activateScroll,
-                      child: Text(isScrolling ? 'Ver todo' : 'Más',
-                          style: Theme.of(context).textTheme.button)),
+                      child: SizedBox(
+                        height: 25.0,
+                        child: Center(
+                          child: Text(isScrolling ? 'Ver todo' : 'Más',
+                              style: Theme.of(context).textTheme.button),
+                        ),
+                      )),
                 ],
               ),
             ),
@@ -63,19 +81,17 @@ class _CardSectionState extends State<CardSection> {
                 children: <Widget>[
                   SizedBox(width: 16.0),
                   CardInformation(
-                    description: widget.description,
-                    color: widget.color,
-                    isScrolling: isScrolling,
-                    icon: widget.icon,
-                    ontap: (activate) {
-                      setState(() => isScrolling = activate);
-                    },
-                  ),
+                      title: widget.title,
+                      description: widget.description,
+                      color: widget.color,
+                      isScrolling: isScrolling,
+                      icon: widget.icon,
+                      ontap: (activate) =>
+                          setState(() => isScrolling = activate)),
                   for (int i = 0; i < proex.products.length; i++)
                     CardElement(
-                      color: widget.color,
-                      product: proex.products[i],
-                    ),
+                        color: config.convertColor(widget.color),
+                        product: proex.products[i]),
                   SizedBox(width: 8.0),
                 ],
               ),
@@ -88,13 +104,19 @@ class _CardSectionState extends State<CardSection> {
 }
 
 class CardInformation extends StatefulWidget {
-  bool isScrolling;
+  final String title;
+  final bool isScrolling;
   final String color;
   final String description;
   final IconData icon;
   final Function(bool) ontap;
   CardInformation(
-      {this.color, this.description, this.isScrolling, this.icon, this.ontap});
+      {this.color,
+      this.description,
+      this.isScrolling,
+      this.icon,
+      this.ontap,
+      @required this.title});
   @override
   _CardInformationState createState() => _CardInformationState();
 }
@@ -150,9 +172,13 @@ class _CardInformationState extends State<CardInformation> {
           Align(
               alignment: Alignment.bottomCenter,
               child: InkWell(
-                onTap: () {
-                  //TODO: go to list section screen
-                },
+                onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => ListProducts(
+                              title: widget.title,
+                              color: config.convertColor(widget.color),
+                            ))),
                 child: Text(
                   'Descubrir',
                   style: TextStyle(color: Colors.blue[800], fontSize: 16.0),
@@ -182,55 +208,6 @@ class _CardInformationState extends State<CardInformation> {
               child: _information()),
           _cover(),
         ],
-      ),
-    );
-  }
-}
-
-class CardElement extends StatelessWidget {
-  final String color;
-  final Product product;
-  CardElement({this.color, this.product});
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 110.0,
-      margin: EdgeInsets.only(right: 8.0),
-      child: InkWell(
-        onTap: () => Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => ProductDetails(product: product))),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Container(
-              height: 110.0,
-              width: 110,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8.0),
-                color: config.convertColor(color).withOpacity(0.5),
-              ),
-              child: ClipRRect(
-                  borderRadius: BorderRadius.circular(8.0),
-                  child: Image.network(
-                    product.images[0],
-                    fit: BoxFit.cover,
-                  )),
-            ),
-            SizedBox(height: 4.0),
-            Text(
-              "${product.name[0].toUpperCase()}${product.name.substring(1)}",
-              overflow: TextOverflow.ellipsis,
-              style: TextStyle(fontSize: 15.0),
-            ),
-            Text(
-              "${product.provider[0].toUpperCase()}${product.provider.substring(1)}",
-              style: TextStyle(color: Colors.grey, fontSize: 12.0),
-            )
-          ],
-        ),
       ),
     );
   }

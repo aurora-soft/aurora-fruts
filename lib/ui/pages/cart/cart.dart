@@ -50,7 +50,7 @@ class _CartViewState extends State<CartView> {
           ]),
       child: Center(
         child: Text(
-          'Enviar y ordenar',
+          'Confirmar orden',
           style: TextStyle(
             color: Colors.white,
             fontSize: 18.0,
@@ -70,9 +70,10 @@ class _CartViewState extends State<CartView> {
       width: MediaQuery.of(context).size.width,
       color: Colors.white,
       padding: EdgeInsets.only(
-          top: MediaQuery.of(context).padding.top + 24.0,
-          left: 16.0,
-          right: 16.0,),
+        top: MediaQuery.of(context).padding.top + 24.0,
+        left: 16.0,
+        right: 16.0,
+      ),
       child: SingleChildScrollView(
         physics: BouncingScrollPhysics(),
         child: Column(
@@ -93,9 +94,7 @@ class _CartViewState extends State<CartView> {
                 );
               },
             ),
-            SizedBox(
-              height: 32.0,
-            ),
+            SizedBox(height: 32.0),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -115,18 +114,34 @@ class _CartViewState extends State<CartView> {
                       style: TextStyle(
                           color: Colors.black,
                           fontSize: 36.0,
-                          fontWeight: FontWeight.bold),
+                          fontWeight: FontWeight.w300),
                     ),
                   ),
                 ),
               ],
             ),
-            SizedBox(
-              height: 150.0,
-              width: MediaQuery.of(context).size.width,
-              child: Center(
-                child: _confirmationButton(),
+            Padding(
+              padding: const EdgeInsets.only(top: 50.0),
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width,
+                child: Center(
+                  child: _confirmationButton(),
+                ),
               ),
+            ),
+            Padding(
+              padding: EdgeInsets.all(16.0),
+              child: Align(
+                  alignment: Alignment.center,
+                  child: InkWell(
+                    onTap: () {
+                      //TODO: go to change points view
+                    },
+                    child: Text(
+                      'Quiero utilizar mis puntos',
+                      style: TextStyle(color: Colors.grey[600]),
+                    ),
+                  )),
             )
           ],
         ),
