@@ -9,24 +9,49 @@ Aurora Fruit provides safety and confidence based on the relevance of the recomm
 # Logo Aurora Fruits
 ![alt text](https://github.com/aurora-soft/aurora-fruts/blob/master/logos/aurora.png)
 
-# Splash Screen
+# Installation Guidelines
+
+There are three ways to test BookShoot:
+
+- Download the .apk file using this link: [Download .apk](https://github.com/aurora-soft/aurora-fruts/blob/master/apk/app.apk)
+
+- This repository contains an executable .apk file in the apk folder. In order to install and run this file you need to have an Android Device.Just open the folder and click the apk on an android device
+
+- Use the flutter run command to run your Flutter app on a connected device or simulator.
+
+ To run your app from the command-line:
+
+ Open a terminal and change directories to the root of your app (the same directory that contains the pubspec.yaml file for   your project).
+ 
+  $ cd myapp $ flutter run
+
+  If more than one device is connected, use the flutter devices command to get their IDs, and then flutter run -d deviceID to   run your app.
+
+# Screenshots
+### Splash Screen
 ![alt text](https://github.com/aurora-soft/aurora-fruts/blob/master/logos/splash.jpg)
 
-# Home Page
+### Home Page
 ![alt text](https://github.com/aurora-soft/aurora-fruts/blob/master/logos/home.jpg)
 
-# Categories Page
+### Categories Page
 ![alt text](https://github.com/aurora-soft/aurora-fruts/blob/master/logos/categories.jpg)
 
-# Item Page
+### Item Page
 ![alt text](https://github.com/aurora-soft/aurora-fruts/blob/master/logos/item.jpg)
 
-# Favorites Page
+### Favorites Page
 ![alt text](https://github.com/aurora-soft/aurora-fruts/blob/master/logos/favorites.jpg)
 
-# Profile Page
+### Profile Page
 ![alt text](https://github.com/aurora-soft/aurora-fruts/blob/master/logos/profile.jpg)
 
 
 # Team
 ![alt text](https://github.com/aurora-soft/aurora-fruts/blob/master/logos/team.png)
+
+# Disclaimer
+Aurora Fruits is a product designed and developed by Aurora Soft Team.
+
+#License
+MIT License. Please Refer LICENCE file for more info. Copyright (c) 2019 Aurora Soft;
