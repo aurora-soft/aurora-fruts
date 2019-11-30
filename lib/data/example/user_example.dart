@@ -1,4 +1,5 @@
 import 'package:aurora_fruts/models/user.dart';
+import 'package:aurora_fruts/ui/pages/favourites/favourites.dart';
 import 'package:flutter/material.dart';
 
 User user = User(
@@ -29,4 +30,14 @@ List<IconData> iconsMenu = [
   Icons.store_mall_directory,
   Icons.settings,
   Icons.info
+];
+
+List<Widget> navigation = [
+  Favorites(activate: true,),
+  Container(),
+  Container(),
+  Container(),
+  Container(),
+  Container(),
+  Container()
 ];

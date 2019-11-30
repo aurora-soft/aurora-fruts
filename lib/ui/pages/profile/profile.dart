@@ -6,12 +6,24 @@ import 'package:aurora_fruts/ui/common_widgets/titlesBar.dart';
 class ProfileView extends StatelessWidget {
   static User user = us.user;
 
-  Widget _menuElement({IconData icon, String title, BuildContext context}) {
+  Widget _menuElement(
+      {IconData icon,
+      String title,
+      BuildContext context,
+      @required Widget route}) {
     return Material(
       color: Colors.white,
       child: ListTile(
         onTap: () {
-          //TODO: navigate to option screen
+          switch (title) {
+            case 'Mis listas':
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => route));
+              break;
+            default:
+              print('route');
+              break;
+          }
         },
         leading: Icon(icon, color: Theme.of(context).primaryColor),
         title: Text(title,
@@ -144,6 +156,7 @@ class ProfileView extends StatelessWidget {
             SizedBox(height: 16.0),
             for (int j = 0; j < us.iconsMenu.length; j++)
               _menuElement(
+                  route: us.navigation[j],
                   icon: us.iconsMenu[j],
                   title: us.menuTags[j],
                   context: context),

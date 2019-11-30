@@ -7,6 +7,9 @@ import 'package:aurora_fruts/data/example/favourites_example.dart' as fex;
 class Favorites extends StatelessWidget {
   static List<Favourites> _lists = fex.listFavourites;
 
+  final bool activate;
+  Favorites({this.activate = false});
+
   Widget _addListsButton(BuildContext context) {
     return InkWell(
       onTap: () {
@@ -68,7 +71,19 @@ class Favorites extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            TitlesBar(h1: 'Mis', h2: 'Favoritos'),
+            Row(
+              children: <Widget>[
+                activate
+                    ? IconButton(
+                        onPressed: () => Navigator.pop(context),
+                        icon: Icon(Icons.arrow_back_ios),
+                        color: Colors.black,
+                      )
+                    : SizedBox(),
+                SizedBox(width: activate ? 8.0 : 0.0),
+                TitlesBar(h1: 'Mis', h2: 'Favoritos'),
+              ],
+            ),
             Padding(
                 padding: const EdgeInsets.symmetric(vertical: 32.0),
                 child: _search(context)),
