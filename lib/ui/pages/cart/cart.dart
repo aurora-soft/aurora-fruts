@@ -159,7 +159,6 @@ class ItemCart extends StatelessWidget {
 
   Widget _imageProduct() {
     return ClipRRect(
-      //TODO: add the image product
       borderRadius: BorderRadius.circular(4.0),
       child: Container(
         height: 60.0,

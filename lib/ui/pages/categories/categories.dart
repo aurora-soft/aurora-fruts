@@ -1,4 +1,5 @@
 import 'package:aurora_fruts/ui/common_widgets/titlesBar.dart';
+import 'package:aurora_fruts/ui/pages/list_products/list_products.dart';
 import 'package:flutter/material.dart';
 import 'package:aurora_fruts/data/example/card_section.dart' as section;
 
@@ -69,9 +70,13 @@ class _CategorieCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        //TODO: go to categorie screen
-      },
+      onTap: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => ListProducts(
+                    title: title,
+                    color: color,
+                  ))),
       child: Container(
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
