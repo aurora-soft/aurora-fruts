@@ -12,7 +12,7 @@ User user = User(
         "https://laboratoriosniam.com/wp-content/uploads/2018/07/michael-dam-258165-unsplash_WEB2.jpg");
 
 List<String> menuTags = [
-  'Tus favoritos',
+  'Mis listas',
   'Billetera',
   'Amigos',
   'Promociones',

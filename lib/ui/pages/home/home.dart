@@ -1,4 +1,5 @@
 import 'package:aurora_fruts/ui/pages/cart/cart.dart';
+import 'package:aurora_fruts/ui/pages/favourites/favourites.dart';
 import 'package:aurora_fruts/ui/pages/home/widgets/cards_section_categories.dart';
 import 'package:aurora_fruts/ui/pages/profile/profile.dart';
 import 'package:flutter/cupertino.dart';
@@ -34,7 +35,7 @@ class Home extends StatelessWidget {
                     return HomeContent();
                     break;
                   case 1:
-                    return Container();
+                    return Favorites();
                     break;
                   case 2:
                     return CartView();

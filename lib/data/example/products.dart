@@ -30,8 +30,17 @@ Product productExample2 = Product(
       'Más que un postre rico y crujiente, estas galletas de avena son beneficiosas para llevar a cabo una buena digestión. Además, estas galletas nos aportan mucha energía sin abusar de los carbohidratos.',
   price: 8.40,
   provider: 'la estancia',
-  labels: ['frutos secos', 'producto natural', 'semillas'],
-  observer: 'mantener a una temperatura ambiente',
+  labels: ['producto integral', 'galletas'],
+  observer: 'mantener en un envase biodegradable, como bolsas de papel',
+  ingredients: [
+    'copos de avena',
+    'harina',
+    'azucar morena',
+    'sal',
+    'huevos',
+    'aceite de oliva',
+    'avellana'
+  ],
   images: [
     'https://www.enmicocinahoy.cl/wp-content/uploads/2013/02/galletas-avena-pasas-1024x708.jpg',
   ],
@@ -44,9 +53,8 @@ Product productExample3 = Product(
   description:
       'Las almendras proporcionan mucha energía, proteínas, minerales, vitaminas y fibra. Además, la mayoría de las grasas que contienen son insaturadas y reducen el colesterol en la sangre.',
   price: 11.00,
-  provider: 'fresh fruits inc.',
-  labels: ['jugo', 'destilado', 'bebida caliente'],
-  ingredients: ['pulpa de manzana', 'azucar', 'canela', 'agua'],
+  provider: 'la colmena',
+  labels: ['frutos secos', 'producto natural', 'semillas'],
   images: [
     'https://mlstaticquic-a.akamaihd.net/almendras-x-12-kiloventa-min1-kg-leer-descripcion-D_NQ_NP_952483-MLU27371602157_052018-F.jpg',
   ],

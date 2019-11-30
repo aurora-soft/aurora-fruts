@@ -52,7 +52,7 @@ class PresentationProduct extends StatelessWidget {
                           BorderRadius.only(topLeft: Radius.circular(35.0)),
                       color: Colors.black45),
                   child: IconButton(
-                    onPressed: () {
+                    onPressed: (){
                       //TODO: add to favourites
                     },
                     icon: Icon(

@@ -1,19 +1,21 @@
 import 'package:aurora_fruts/models/user.dart';
 import 'package:flutter/material.dart';
 import 'package:aurora_fruts/data/example/user_example.dart' as us;
+import 'package:aurora_fruts/ui/common_widgets/titlesBar.dart';
 
 class ProfileView extends StatelessWidget {
   static User user = us.user;
 
   Widget _menuElement({IconData icon, String title, BuildContext context}) {
-    return ListTile(
-      leading: Icon(
-        icon,
-        color: Theme.of(context).primaryColor,
-      ),
-      title: Text(
-        title,
-        style: TextStyle(color: Theme.of(context).primaryColor),
+    return Material(
+      color: Colors.white,
+      child: ListTile(
+        onTap: () {
+          //TODO: navigate to option screen
+        },
+        leading: Icon(icon, color: Theme.of(context).primaryColor),
+        title: Text(title,
+            style: TextStyle(color: Theme.of(context).primaryColor)),
       ),
     );
   }
@@ -23,24 +25,19 @@ class ProfileView extends StatelessWidget {
       height: 100.0,
       decoration: BoxDecoration(
           border: Border(
-              top: BorderSide(color: Colors.grey),
-              bottom: BorderSide(color: Colors.grey),
-              left: right
-                  ? BorderSide(color: Colors.grey)
-                  : BorderSide(color: Colors.white),
-              right: BorderSide(color: Colors.grey))),
+        top: BorderSide(color: Colors.grey),
+        bottom: BorderSide(color: Colors.grey),
+        right: right
+            ? BorderSide(color: Colors.grey)
+            : BorderSide(color: Colors.white),
+      )),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Text(
-            value,
-            style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
-          ),
+          Text(value,
+              style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold)),
           SizedBox(height: 4.0),
-          Text(
-            key,
-            style: TextStyle(fontSize: 14.0, color: Colors.grey),
-          ),
+          Text(key, style: TextStyle(fontSize: 14.0, color: Colors.grey)),
         ],
       ),
     );
@@ -69,9 +66,7 @@ class ProfileView extends StatelessWidget {
               image: DecorationImage(
                   image: NetworkImage(user.imageProfile), fit: BoxFit.cover)),
         ),
-        SizedBox(
-          width: 32.0,
-        ),
+        SizedBox(width: 32.0),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
@@ -94,50 +89,42 @@ class ProfileView extends StatelessWidget {
       height: MediaQuery.of(context).size.height,
       width: MediaQuery.of(context).size.width,
       padding: EdgeInsets.only(
-          top: MediaQuery.of(context).padding.top + 24.0,
-          left: 16.0,
-          right: 16.0,
-          bottom: 8.0),
+        top: MediaQuery.of(context).padding.top + 24.0,
+      ),
       child: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
         physics: BouncingScrollPhysics(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Row(
-              children: <Widget>[
-                RichText(
-                  text: TextSpan(
-                      style: DefaultTextStyle.of(context).style,
-                      children: [
-                        TextSpan(
-                            text: 'Mi\n',
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 32.0,
-                                fontWeight: FontWeight.bold)),
-                        TextSpan(
-                            text: 'Perfil',
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 32.0,
-                                fontWeight: FontWeight.w300))
-                      ]),
-                ),
-                Expanded(
-                  child: Align(
-                    alignment: Alignment.centerRight,
-                    child: Icon(Icons.edit),
-                  ),
-                )
-              ],
+            Padding(
+              padding: const EdgeInsets.only(left: 16.0, right: 16.0),
+              child: Row(
+                children: <Widget>[
+                  TitlesBar(h1: 'Mi', h2: 'Cuenta'),
+                  Expanded(
+                    child: Align(
+                        alignment: Alignment.centerRight,
+                        child: Icon(Icons.edit)),
+                  )
+                ],
+              ),
             ),
             SizedBox(height: 32.0),
-            _pictureInformation(),
-            SizedBox(height: 16.0),
-            _informationAditional(icon: Icons.phone, data: user.telephone),
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              padding: const EdgeInsets.only(
+                left: 16.0,
+                right: 16.0,
+              ),
+              child: _pictureInformation(),
+            ),
+            SizedBox(height: 16.0),
+            Padding(
+                padding: const EdgeInsets.only(left: 16.0, right: 16.0),
+                child: _informationAditional(
+                    icon: Icons.phone, data: user.telephone)),
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
               child: _informationAditional(icon: Icons.mail, data: user.email),
             ),
             SizedBox(height: 16.0),
@@ -160,16 +147,10 @@ class ProfileView extends StatelessWidget {
                   icon: us.iconsMenu[j],
                   title: us.menuTags[j],
                   context: context),
-            Divider(),
+            Divider(color: Colors.grey),
             ListTile(
-              leading: Icon(
-                Icons.power_settings_new,
-                color: Colors.red,
-              ),
-              title: Text(
-                'Cerrar Sesión',
-                style: TextStyle(color: Colors.red),
-              ),
+              leading: Icon(Icons.power_settings_new, color: Colors.red),
+              title: Text('Cerrar Sesión', style: TextStyle(color: Colors.red)),
             ),
           ],
         ),
