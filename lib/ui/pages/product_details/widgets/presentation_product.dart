@@ -2,9 +2,17 @@ import 'package:aurora_fruts/models/product.dart';
 import 'package:flutter/material.dart';
 import 'package:aurora_fruts/ui/common_widgets/snackbar.dart' as snackbar;
 
-class PresentationProduct extends StatelessWidget {
+class PresentationProduct extends StatefulWidget {
   final Product product;
+
   PresentationProduct({this.product});
+
+  @override
+  _PresentationProductState createState() => _PresentationProductState();
+}
+
+class _PresentationProductState extends State<PresentationProduct> {
+  bool favorite;
 
   Widget _imageBuilder(BuildContext context) {
     return SizedBox(
@@ -19,7 +27,7 @@ class PresentationProduct extends StatelessWidget {
             child: RotatedBox(
               quarterTurns: -1,
               child: Text(
-                '${product.weight}',
+                '${widget.product.weight}',
                 style: TextStyle(
                     color: Colors.grey[400],
                     fontWeight: FontWeight.bold,
@@ -27,9 +35,7 @@ class PresentationProduct extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(
-            width: 8.0,
-          ),
+          SizedBox(width: 8.0),
           ClipRRect(
             borderRadius: BorderRadius.circular(35),
             child: Stack(children: [
@@ -37,7 +43,7 @@ class PresentationProduct extends StatelessWidget {
                 height: 200.0,
                 width: 250.0,
                 child: Image.network(
-                  product.images[0],
+                  widget.product.images[0],
                   fit: BoxFit.cover,
                 ),
               ),
@@ -54,10 +60,19 @@ class PresentationProduct extends StatelessWidget {
                   child: IconButton(
                     onPressed: () {
                       //TODO: add to favourites
+                      setState(() {
+                        favorite = !favorite;
+                      });
+                      snackbar.showSnackBar(
+                          context: context,
+                          title: favorite
+                              ? 'Añadido a favoritos'
+                              : 'Eliminado de favoritos',
+                          color: Theme.of(context).accentColor);
                     },
                     icon: Icon(
-                      Icons.favorite_border,
-                      color: Colors.grey,
+                      favorite ? Icons.favorite : Icons.favorite_border,
+                      color: favorite ? Colors.red : Colors.grey,
                       size: 32.0,
                     ),
                   ),
@@ -75,6 +90,7 @@ class PresentationProduct extends StatelessWidget {
                       color: Colors.black45),
                   child: IconButton(
                     onPressed: () {
+                      //TODO: add to cart
                       snackbar.showSnackBar(
                           context: context,
                           color: Theme.of(context).accentColor,
@@ -96,6 +112,12 @@ class PresentationProduct extends StatelessWidget {
   }
 
   @override
+  void initState() {
+    super.initState();
+    favorite = false;
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Container(
       child: Column(
@@ -103,7 +125,7 @@ class PresentationProduct extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           _imageBuilder(context),
-          Rating(product: product),
+          Rating(product: widget.product),
         ],
       ),
     );

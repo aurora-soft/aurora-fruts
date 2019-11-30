@@ -11,8 +11,9 @@ class _ContentSnackBar extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(4.0),
       height: 40.0,
-      decoration:
-          BoxDecoration(borderRadius: BorderRadius.circular(8.0), color: color),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8.0),
+          color: color ?? Theme.of(context).accentColor),
       child: Center(
         child: Text(
           text,

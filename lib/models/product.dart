@@ -23,4 +23,5 @@ class Product {
       this.weight,
       this.observer,
       this.dateCreated});
+
 }

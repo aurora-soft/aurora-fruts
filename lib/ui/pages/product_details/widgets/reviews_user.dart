@@ -30,7 +30,18 @@ class ReviewsUser extends StatelessWidget {
               child: Center(
                 child: Text('Tu calificación',
                     style: TextStyle(color: Colors.grey[700])),
-              ))
+              )),
+          SizedBox(
+            width: MediaQuery.of(context).size.width,
+            height: 200.0,
+            child: Center(
+              child:Text(
+                'No hay reseñas de otros usuarios\ndisponibles',
+                textAlign: TextAlign.center,
+                style: TextStyle(color: Colors.grey[500], fontSize: 20.0),
+              ),
+            ),
+          )
         ],
       ),
     );

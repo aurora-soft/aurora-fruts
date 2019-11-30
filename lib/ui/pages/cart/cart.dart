@@ -2,8 +2,7 @@ import 'package:aurora_fruts/models/cart.dart';
 import 'package:aurora_fruts/models/product.dart';
 import 'package:flutter/material.dart';
 import 'package:aurora_fruts/data/example/cart_example.dart' as carex;
-import 'package:aurora_fruts/utils/config.dart'as config;
-import 'package:aurora_fruts/data/constants.dart'as constant;
+import 'package:aurora_fruts/ui/common_widgets/titlesBar.dart';
 
 class CartView extends StatefulWidget {
   @override
@@ -38,27 +37,25 @@ class _CartViewState extends State<CartView> {
     total = 0;
   }
 
-  Widget _confirmationButton(){
+  Widget _confirmationButton() {
     return Container(
-      margin: EdgeInsets.only(right: 8.0),
       height: 50.0,
-      width: MediaQuery.of(context).size.width-32,
+      width: MediaQuery.of(context).size.width - 32,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8.0),
-        color: Theme.of(context).accentColor.withOpacity(0.9),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey[400],
-            blurRadius: 5.0,
-            spreadRadius: 2.0
-          )
-        ]
-      ),
+          borderRadius: BorderRadius.circular(8.0),
+          color: Theme.of(context).accentColor.withOpacity(0.9),
+          boxShadow: [
+            BoxShadow(
+                color: Colors.grey[400], blurRadius: 5.0, spreadRadius: 2.0)
+          ]),
       child: Center(
-        child: Text('Confirmar compra'.toUpperCase(),style: TextStyle(
-          color: Colors.white,
-          fontSize: 20.0,
-        ),),
+        child: Text(
+          'Confirmar orden',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 18.0,
+          ),
+        ),
       ),
     );
   }
@@ -73,31 +70,16 @@ class _CartViewState extends State<CartView> {
       width: MediaQuery.of(context).size.width,
       color: Colors.white,
       padding: EdgeInsets.only(
-          top: MediaQuery.of(context).padding.top + 24.0,
-          left: 8.0,
-          bottom: 8.0),
+        top: MediaQuery.of(context).padding.top + 24.0,
+        left: 16.0,
+        right: 16.0,
+      ),
       child: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            RichText(
-              text: TextSpan(
-                  style: DefaultTextStyle.of(context).style,
-                  children: [
-                    TextSpan(
-                        text: 'Mi\n',
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 32.0,
-                            fontWeight: FontWeight.bold)),
-                    TextSpan(
-                        text: 'Orden',
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 32.0,
-                            fontWeight: FontWeight.w300))
-                  ]),
-            ),
+            TitlesBar(h1: 'Mi', h2: 'Orden'),
             SizedBox(height: 32.0),
             ListView.builder(
               shrinkWrap: true,
@@ -112,43 +94,55 @@ class _CartViewState extends State<CartView> {
                 );
               },
             ),
-            SizedBox(
-              height: 32.0,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Text(
-                    'Total:',
-                    style: TextStyle(
-                        fontSize: 32.0,
-                        color: Colors.black,
-                        fontWeight: FontWeight.w300),
-                  ),
-                  Expanded(
-                    child: Align(
-                      alignment: Alignment.centerRight,
-                      child: Text(
-                        "\$ ${_getTotal(_products, _cantidades).toStringAsFixed(2)}",
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 36.0,
-                            fontWeight: FontWeight.bold),
-                      ),
+            SizedBox(height: 32.0),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Text(
+                  'Total:',
+                  style: TextStyle(
+                      fontSize: 32.0,
+                      color: Colors.black,
+                      fontWeight: FontWeight.w300),
+                ),
+                Expanded(
+                  child: Align(
+                    alignment: Alignment.centerRight,
+                    child: Text(
+                      "\$ ${_getTotal(_products, _cantidades).toStringAsFixed(2)}",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 36.0,
+                          fontWeight: FontWeight.w300),
                     ),
                   ),
-                ],
+                ),
+              ],
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 50.0),
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width,
+                child: Center(
+                  child: _confirmationButton(),
+                ),
               ),
             ),
-            SizedBox(
-              height: 150.0,
-              width: MediaQuery.of(context).size.width,
-              child: Center(
-              child: _confirmationButton(),
-            ),)
+            Padding(
+              padding: EdgeInsets.all(16.0),
+              child: Align(
+                  alignment: Alignment.center,
+                  child: InkWell(
+                    onTap: () {
+                      //TODO: go to change points view
+                    },
+                    child: Text(
+                      'Quiero utilizar mis puntos',
+                      style: TextStyle(color: Colors.grey[600]),
+                    ),
+                  )),
+            )
           ],
         ),
       ),
@@ -161,17 +155,19 @@ class ItemCart extends StatelessWidget {
   final String imageLink;
   final String name;
   final double price;
-  ItemCart({this.name, this.quantity, this.price,this.imageLink});
+  ItemCart({this.name, this.quantity, this.price, this.imageLink});
 
   Widget _imageProduct() {
     return ClipRRect(
-      //TODO: add the image product
       borderRadius: BorderRadius.circular(4.0),
       child: Container(
         height: 60.0,
         width: 80.0,
         color: Colors.blue,
-        child: Image.network(imageLink,fit: BoxFit.cover,),
+        child: Image.network(
+          imageLink,
+          fit: BoxFit.cover,
+        ),
       ),
     );
   }
@@ -179,7 +175,7 @@ class ItemCart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Row(
         children: <Widget>[
           _imageProduct(),

@@ -1,5 +1,7 @@
 import 'package:aurora_fruts/ui/pages/cart/cart.dart';
+import 'package:aurora_fruts/ui/pages/favourites/favourites.dart';
 import 'package:aurora_fruts/ui/pages/home/widgets/cards_section_categories.dart';
+import 'package:aurora_fruts/ui/pages/profile/profile.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:aurora_fruts/data/constants.dart' as constant;
@@ -33,13 +35,13 @@ class Home extends StatelessWidget {
                     return HomeContent();
                     break;
                   case 1:
-                    return Container();
+                    return Favorites();
                     break;
                   case 2:
                     return CartView();
                     break;
                   case 3:
-                    return Container();
+                    return ProfileView();
                     break;
                   default:
                     return Container();
@@ -110,7 +112,7 @@ class HomeContent extends StatelessWidget {
           ),
           child: Center(
             child: Text(
-              'Ametis Food',
+              'Aurora Fruits',
               style: TextStyle(
                 fontFamily: 'Pacifico-Regular',
                 fontSize: 42.0,
@@ -140,7 +142,7 @@ class HomeContent extends StatelessWidget {
             SizedBox(height: 165.0),
             Container(
               width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height - 78.0 - 165,
+              height: MediaQuery.of(context).size.height - 78.0 - 166,
               child: SingleChildScrollView(
                 physics: BouncingScrollPhysics(),
                 scrollDirection: Axis.vertical,
