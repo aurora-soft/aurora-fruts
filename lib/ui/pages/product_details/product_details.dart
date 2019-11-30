@@ -63,7 +63,7 @@ class ProductDetails extends StatelessWidget {
                   child: AditionalInformation(product: product)),
               Container(
                   width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height * 0.5,
+                  height: MediaQuery.of(context).size.height * 0.4,
                   child: ReviewsUser())
             ],
           ),
