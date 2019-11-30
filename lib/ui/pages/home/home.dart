@@ -112,7 +112,7 @@ class HomeContent extends StatelessWidget {
           ),
           child: Center(
             child: Text(
-              'Ametis Food',
+              'Aurora Fruits',
               style: TextStyle(
                 fontFamily: 'Pacifico-Regular',
                 fontSize: 42.0,
