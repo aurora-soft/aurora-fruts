@@ -53,5 +53,5 @@ There are three ways to test BookShoot:
 # Disclaimer
 Aurora Fruits is a product designed and developed by Aurora Soft Team.
 
-#License
-MIT License. Please Refer LICENCE file for more info. Copyright (c) 2019 Aurora Soft;
+# License
+MIT License. Please Refer [LICENCE](https://opensource.org/licenses/MIT) file for more info. Copyright (c) 2019 Aurora Soft;
