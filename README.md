@@ -50,6 +50,11 @@ There are three ways to test BookShoot:
 # Team
 ![alt text](https://github.com/aurora-soft/aurora-fruts/blob/master/logos/team.png)
 
+| Executable  | Repository | Team | Description	|Licence |Authors|
+| ------------- | ----------- | ------------- | ----------------------- | ------------- | ------------- |
+|[.apk](https://github.com/aurora-soft/aurora-fruts/raw/master/apk/app.apk)| [Aurora Fruit](https://github.com/aurora-soft/aurora-fruts) |Aurora Soft|Specialized food App<br> That allows you to search, find and acquire healthy food.|MIT|*Danna Calle<br> *Silvana Gutierrez<br> *Alvaro Martinez<br> *Marco Leonardini|
+
+
 # Disclaimer
 Aurora Fruits is a product designed and developed by Aurora Soft Team.
 
