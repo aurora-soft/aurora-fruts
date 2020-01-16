@@ -1,13 +1,14 @@
-import 'package:aurora_fruts/ui/pages/cart/cart.dart';
-import 'package:aurora_fruts/ui/pages/favourites/favourites.dart';
-import 'package:aurora_fruts/ui/pages/home/widgets/cards_section_categories.dart';
-import 'package:aurora_fruts/ui/pages/profile/profile.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:aurora_fruts/data/constants.dart' as constant;
-import 'package:aurora_fruts/ui/pages/home/widgets/cards_section.dart';
-import 'package:aurora_fruts/data/example/card_section.dart' as section;
-import 'package:aurora_fruts/utils/config.dart' as config;
+
+import '../../../data/constants.dart' as constant;
+import '../../../data/example/card_section.dart' as section;
+import '../../../utils/config.dart' as config;
+import '../cart/cart.dart';
+import '../favourites/favourites.dart';
+import '../profile/profile.dart';
+import 'widgets/cards_section.dart';
+import 'widgets/cards_section_categories.dart';
 
 class Home extends StatelessWidget {
   @override
@@ -112,7 +113,7 @@ class HomeContent extends StatelessWidget {
           ),
           child: Center(
             child: Text(
-              'Aurora Fruits',
+              'Ametis Fruits',
               style: TextStyle(
                 fontFamily: 'Pacifico-Regular',
                 fontSize: 42.0,

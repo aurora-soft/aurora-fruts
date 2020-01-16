@@ -167,8 +167,8 @@ class Rating extends StatelessWidget {
             children: <TextSpan>[
               TextSpan(
                   text: product.discount != null
-                      ? '\$ ${product.discount}\t'
-                      : '\$ ${product.price}\t',
+                      ? 'Bs. ${product.discount}\t'
+                      : 'Bs. ${product.price}\t',
                   style:
                       TextStyle(fontWeight: FontWeight.bold, fontSize: 28.0)),
               TextSpan(

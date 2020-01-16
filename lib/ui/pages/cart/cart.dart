@@ -1,5 +1,6 @@
 import 'package:aurora_fruts/models/cart.dart';
 import 'package:aurora_fruts/models/product.dart';
+import 'package:aurora_fruts/ui/pages/schedule/schedule.page.dart';
 import 'package:flutter/material.dart';
 import 'package:aurora_fruts/data/example/cart_example.dart' as carex;
 import 'package:aurora_fruts/ui/common_widgets/titlesBar.dart';
@@ -50,10 +51,39 @@ class _CartViewState extends State<CartView> {
           ]),
       child: Center(
         child: Text(
-          'Confirmar orden',
+          'Confirmar Orden',
           style: TextStyle(
             color: Colors.white,
             fontSize: 18.0,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _scheduleButton() {
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => SchedulePage()));
+      },
+      child: Container(
+        height: 50.0,
+        width: MediaQuery.of(context).size.width - 32,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(8.0),
+            color: Theme.of(context).accentColor.withOpacity(0.5),
+            boxShadow: [
+              BoxShadow(
+                  color: Colors.grey[400], blurRadius: 5.0, spreadRadius: 2.0)
+            ]),
+        child: Center(
+          child: Text(
+            'Planear Entregas',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 18.0,
+            ),
           ),
         ),
       ),
@@ -110,7 +140,7 @@ class _CartViewState extends State<CartView> {
                   child: Align(
                     alignment: Alignment.centerRight,
                     child: Text(
-                      "\$ ${_getTotal(_products, _cantidades).toStringAsFixed(2)}",
+                      "Bs. ${_getTotal(_products, _cantidades).toStringAsFixed(2)}",
                       style: TextStyle(
                           color: Colors.black,
                           fontSize: 36.0,
@@ -126,6 +156,15 @@ class _CartViewState extends State<CartView> {
                 width: MediaQuery.of(context).size.width,
                 child: Center(
                   child: _confirmationButton(),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 6.0),
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width,
+                child: Center(
+                  child: _scheduleButton(),
                 ),
               ),
             ),
@@ -190,7 +229,7 @@ class ItemCart extends StatelessWidget {
                     style: Theme.of(context).textTheme.display4)),
           ),
           Text(
-            "\$ ${price.toStringAsFixed(2)}",
+            "Bs. ${price.toStringAsFixed(2)}",
             style: TextStyle(color: Colors.grey, fontSize: 16.0),
           )
         ],

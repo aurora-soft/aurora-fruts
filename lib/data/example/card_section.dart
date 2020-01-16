@@ -2,11 +2,11 @@ import 'package:aurora_fruts/data/constants.dart';
 import 'package:flutter/material.dart';
 
 const List<String> cardsSectionTitles = [
-  'Ofertas',
-  'Categorías',
   'Mejor Calificadas',
+  'Categorías',
+  'Sugerencias',
+  'Ofertas',
   'Novedades',
-  'Sugerencias'
 ];
 
 List<String> colorsListCards = [
