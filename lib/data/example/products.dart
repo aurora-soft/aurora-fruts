@@ -7,6 +7,12 @@ List<Product> products = [
   productExample4
 ];
 
+List<Product> ensaladasProducts = [
+  productExample5,
+  productExample6,
+  productExample7,
+];
+
 Product productExample1 = Product(
   name: 'té de manzana',
   discount: 1.42,
@@ -31,7 +37,9 @@ Product productExample2 = Product(
   price: 3.40,
   provider: 'la estancia',
   labels: ['producto integral', 'galletas'],
-  observer: 'mantener en un envase biodegradable, como bolsas de papel',
+  observer: 'Delicious Food (La Paz)',
+  deliveryScheduale: '08:00 - 12:00 A.M.',
+  // observer: 'mantener en un envase biodegradable, como bolsas de papel',
   ingredients: [
     'copos de avena',
     'harina',
@@ -84,5 +92,74 @@ Product productExample4 = Product(
       'mantener el producto a una temperatura al rededor de los 10°C a 15°C',
   images: [
     'https://cdn.cookmonkeys.es/recetas/medium/zumo-de-tomate-preparado-en-thermomix-13665.jpg',
+  ],
+);
+
+Product productExample5 = Product(
+  name: 'Ensalada de fruta simple',
+  discount: 0.0,
+  weight: '600 ml',
+  description:
+      'Ensalada de fruta simple, contiene una gran variedad de frutas frescas de la temporada',
+  price: 10.0,
+  provider: 'Fresh Fruits inc.',
+  labels: ['Ensalada', 'Frutas'],
+  ingredients: [
+    'Manzanas',
+    'Plátano',
+    'Papaya',
+    'Piña',
+    'Uvas',
+  ],
+  observer: 'Delicious Food',
+  images: [
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqxxkyS2yrosF6ZYiu7ZbcDirtS50VOJ9lGMgdJgE-hl-zWzpW6Q&s',
+  ],
+);
+
+Product productExample6 = Product(
+  name: 'Ensalada de fruta con yogurt',
+  discount: 0.0,
+  weight: '600 ml',
+  description:
+      'Ensalada de fruta simple, contiene una gran variedad de frutas frescas de la temporada, adicionalmente viene con el yogurt de su preferencia',
+  price: 12.0,
+  provider: 'Fresh Fruits inc.',
+  labels: ['Ensalada', 'Frutas'],
+  ingredients: [
+    'Manzanas',
+    'Plátano',
+    'Papaya',
+    'Piña',
+    'Uvas',
+    'Yogurt',
+  ],
+  observer: 'Delicious Food',
+  images: [
+    'https://ensaladafrutas.com/wp-content/uploads/2017/11/17.-ensalada-de-fruta-peruana.jpg',
+  ],
+);
+
+Product productExample7 = Product(
+  name: 'Ensalada de fruta con yogurt y granola',
+  discount: 0.0,
+  weight: '600 ml',
+  description:
+      'Ensalada de fruta simple, contiene una gran variedad de frutas frescas de la temporada, adicionalmente viene con granola y el yogurt de su preferencia',
+  price: 12.0,
+  provider: 'Fresh Fruits inc.',
+  labels: ['Ensalada', 'Frutas'],
+  ingredients: [
+    'Manzanas',
+    'Plátano',
+    'Papaya',
+    'Piña',
+    'Uvas',
+    'Yogurt',
+    'Granola'
+  ],
+  observer: 'Delicious Food',
+  images: [
+    'https://www.solocontestas.com/wp-content/uploads/2013/08/Fruta-Mixta-con-Yogur.jpg',
   ],
 );

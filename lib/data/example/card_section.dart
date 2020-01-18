@@ -17,11 +17,12 @@ List<String> colorsListCards = [
 ];
 
 List<String> informationCardsSection = [
-  'Descubre lo que nuestros distribuidores ofertan para ti y ahorra tus recursos',
-  'Descubre un sin fin de categorias sobre nuestros productos',
   'Descubre e interactua con los mejores productos calificados por la comunidad',
+  'Descubre un sin fin de categorias sobre nuestros productos',
+  'Descubre propuestas basadas en tus gustos y preferencias particulares',
+  'Encuentra ofertas de la semana dentro de nuestra gran variedad de productos saludables',
   'Descubre un nuevo mundo de sabores con nuestras novedades',
-  'Descubre propustas basadas en tus gustos particulares'
+  // 'Descubre lo que nuestros distribuidores ofertan para ti y ahorra tus recursos',
 ];
 
 List<IconData> iconCardSection = [

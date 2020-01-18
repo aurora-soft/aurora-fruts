@@ -33,13 +33,27 @@ class ReviewsUser extends StatelessWidget {
               )),
           SizedBox(
             width: MediaQuery.of(context).size.width,
-            height: 200.0,
-            child: Center(
-              child:Text(
-                'No hay reseñas de otros usuarios\ndisponibles',
-                textAlign: TextAlign.center,
-                style: TextStyle(color: Colors.grey[500], fontSize: 20.0),
-              ),
+            height: 160.0,
+            child: Column(
+              children: <Widget>[
+                Text(
+                  'Es una gran opción para comer algo a media mañana, es una merienda muy rica y fresca',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(color: Colors.grey[500], fontSize: 16.0),
+                ),
+                Divider(),
+                Text(
+                  'Gran opcíon para escoger cuando tienes que comer algo saludable en la mañana',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(color: Colors.grey[500], fontSize: 16.0),
+                ),
+                Divider(),
+                Text(
+                  'Yo siempre como 2 a la semana, me ayudo mucho a seguir mi dieta',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(color: Colors.grey[500], fontSize: 16.0),
+                ),
+              ],
             ),
           )
         ],

@@ -23,7 +23,7 @@ class _AditionalInformationState extends State<AditionalInformation>
     if (picker == 2) {
       return Ingredients(ingredients: widget.product.ingredients);
     } else if (picker == 1) {
-      return Notes(notes: widget.product.observer);
+      return Notes(product: widget.product);
     } else {
       return Description(description: widget.product.description);
     }
@@ -76,7 +76,7 @@ class _AditionalInformationState extends State<AditionalInformation>
               controller: _tabController,
               tabs: <Widget>[
                 Tab(child: Text('Descripción')),
-                Tab(child: Text('Notas')),
+                Tab(child: Text('Elaborado')),
                 Tab(child: Text('Ingredientes')),
               ],
             ),
@@ -152,12 +152,12 @@ class Description extends StatelessWidget {
 }
 
 class Notes extends StatelessWidget {
-  final String notes;
-  Notes({this.notes});
+  final Product product;
+  Notes({this.product});
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: notes != null
+      child: product != null
           ? Row(
               children: <Widget>[
                 Flexible(
@@ -165,9 +165,25 @@ class Notes extends StatelessWidget {
                   child: Container(
                     padding:
                         EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
-                    child: Text(
-                      '"${notes[0].toUpperCase()}${notes.substring(1)}"',
-                      style: TextStyle(color: Colors.grey[600]),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text(
+                          '${product.observer}',
+                          style: TextStyle(color: Colors.grey[900]),
+                        ),
+                        SizedBox(
+                          height: 12,
+                        ),
+                        Text(
+                          'Horarios de Entrega ',
+                          style: TextStyle(color: Colors.grey[600]),
+                        ),
+                        Text(
+                          '"${product.deliveryScheduale}"',
+                          style: TextStyle(color: Colors.grey[600]),
+                        ),
+                      ],
                     ),
                   ),
                 ),

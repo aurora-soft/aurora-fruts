@@ -10,6 +10,7 @@ class Product {
   String weight;
   String observer;
   String dateCreated;
+  String deliveryScheduale;
 
   Product(
       {this.description,
@@ -22,6 +23,6 @@ class Product {
       this.images,
       this.weight,
       this.observer,
-      this.dateCreated});
-
+      this.dateCreated,
+      this.deliveryScheduale});
 }

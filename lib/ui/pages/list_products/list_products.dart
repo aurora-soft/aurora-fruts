@@ -21,8 +21,12 @@ class ListProducts extends StatelessWidget {
             mainAxisSpacing: 0,
             crossAxisCount: 3,
             children: <Widget>[
-              for (int i = 0; i < proex.products.length; i++)
-                CardElement(product: proex.products[i])
+              if (title.toLowerCase() != 'ensaladas')
+                for (int i = 0; i < proex.products.length; i++)
+                  CardElement(product: proex.products[i])
+              else
+                for (int i = 0; i < proex.ensaladasProducts.length; i++)
+                  CardElement(product: proex.ensaladasProducts[i])
             ],
           ),
         ),
@@ -45,8 +49,7 @@ class ListProducts extends StatelessWidget {
                   icon: Icon(Icons.arrow_back_ios),
                   color: Colors.black,
                 ),
-                backgroundColor:
-                    Colors.white,
+                backgroundColor: Colors.white,
                 expandedHeight: 200.0,
                 floating: true,
                 pinned: true,

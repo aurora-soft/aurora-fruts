@@ -56,7 +56,7 @@ class _PresentationProductState extends State<PresentationProduct> {
                   decoration: BoxDecoration(
                       borderRadius:
                           BorderRadius.only(topLeft: Radius.circular(35.0)),
-                      color: Colors.black45),
+                      color: Colors.black87),
                   child: IconButton(
                     onPressed: () {
                       //TODO: add to favourites
@@ -87,7 +87,7 @@ class _PresentationProductState extends State<PresentationProduct> {
                   decoration: BoxDecoration(
                       borderRadius:
                           BorderRadius.only(bottomLeft: Radius.circular(35.0)),
-                      color: Colors.black45),
+                      color: Colors.black87),
                   child: IconButton(
                     onPressed: () {
                       //TODO: add to cart
