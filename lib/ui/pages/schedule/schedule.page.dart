@@ -179,6 +179,7 @@ class _SchedulePageState extends State<SchedulePage> {
                       horizontal: 8.0, vertical: 4.0),
                   child: ListTile(
                     title: Text(event.toString()),
+                    subtitle: Text('Hora de entrega: 09:00 A.M.'),
                     onTap: () => print('$event tapped!'),
                   ),
                 ))

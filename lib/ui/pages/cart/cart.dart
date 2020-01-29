@@ -1,5 +1,7 @@
 import 'package:aurora_fruts/models/cart.dart';
 import 'package:aurora_fruts/models/product.dart';
+import 'package:aurora_fruts/ui/common_widgets/cart.widget.dart';
+import 'package:aurora_fruts/ui/pages/payment/payment.page.dart';
 import 'package:aurora_fruts/ui/pages/schedule/schedule.page.dart';
 import 'package:flutter/material.dart';
 import 'package:aurora_fruts/data/example/cart_example.dart' as carex;
@@ -39,22 +41,26 @@ class _CartViewState extends State<CartView> {
   }
 
   Widget _confirmationButton() {
-    return Container(
-      height: 50.0,
-      width: MediaQuery.of(context).size.width - 32,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8.0),
-          color: Theme.of(context).accentColor.withOpacity(0.9),
-          boxShadow: [
-            BoxShadow(
-                color: Colors.grey[400], blurRadius: 5.0, spreadRadius: 2.0)
-          ]),
-      child: Center(
-        child: Text(
-          'Confirmar Orden',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 18.0,
+    return GestureDetector(
+      onTap: () => Navigator.push(
+          context, MaterialPageRoute(builder: (context) => PaymentPage())),
+      child: Container(
+        height: 50.0,
+        width: MediaQuery.of(context).size.width - 32,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(8.0),
+            color: Theme.of(context).accentColor.withOpacity(0.9),
+            boxShadow: [
+              BoxShadow(
+                  color: Colors.grey[400], blurRadius: 5.0, spreadRadius: 2.0)
+            ]),
+        child: Center(
+          child: Text(
+            'Confirmar Orden',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 18.0,
+            ),
           ),
         ),
       ),
@@ -121,6 +127,7 @@ class _CartViewState extends State<CartView> {
                   name: _products[item].name,
                   quantity: _cantidades[item],
                   price: _getPrice(_products[item], _cantidades[item]),
+                  includeImage: true,
                 );
               },
             ),
@@ -184,55 +191,6 @@ class _CartViewState extends State<CartView> {
             )
           ],
         ),
-      ),
-    );
-  }
-}
-
-class ItemCart extends StatelessWidget {
-  final int quantity;
-  final String imageLink;
-  final String name;
-  final double price;
-  ItemCart({this.name, this.quantity, this.price, this.imageLink});
-
-  Widget _imageProduct() {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(4.0),
-      child: Container(
-        height: 60.0,
-        width: 80.0,
-        color: Colors.blue,
-        child: Image.network(
-          imageLink,
-          fit: BoxFit.cover,
-        ),
-      ),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
-      child: Row(
-        children: <Widget>[
-          _imageProduct(),
-          SizedBox(width: 16.0),
-          Text(quantity.toString(),
-              style: Theme.of(context).textTheme.display4),
-          Text("\t\tx\t\t", style: Theme.of(context).textTheme.display4),
-          Expanded(
-            child: SizedBox(
-                width: 130.0,
-                child: Text('${name[0].toUpperCase()}${name.substring(1)}',
-                    style: Theme.of(context).textTheme.display4)),
-          ),
-          Text(
-            "Bs. ${price.toStringAsFixed(2)}",
-            style: TextStyle(color: Colors.grey, fontSize: 16.0),
-          )
-        ],
       ),
     );
   }
