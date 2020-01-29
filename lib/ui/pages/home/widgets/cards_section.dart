@@ -1,13 +1,12 @@
 import 'package:aurora_fruts/ui/common_widgets/card_element.dart';
 import 'package:aurora_fruts/ui/pages/list_products/list_products.dart';
 import 'package:flutter/material.dart';
-import 'package:aurora_fruts/utils/config.dart' as config;
 import 'package:aurora_fruts/data/example/products.dart' as proex;
 
 class CardSection extends StatefulWidget {
   final String description;
   final String title;
-  final String color;
+  final Color color;
   final IconData icon;
   CardSection({this.title, this.color, this.description, this.icon});
 
@@ -31,7 +30,7 @@ class _CardSectionState extends State<CardSection> {
           MaterialPageRoute(
               builder: (context) => ListProducts(
                     title: widget.title,
-                    color: config.convertColor(widget.color),
+                    color: widget.color,
                   )));
     }
     setState(() {
@@ -90,8 +89,7 @@ class _CardSectionState extends State<CardSection> {
                           setState(() => isScrolling = activate)),
                   for (int i = 0; i < proex.products.length; i++)
                     CardElement(
-                        color: config.convertColor(widget.color),
-                        product: proex.products[i]),
+                        color: widget.color, product: proex.products[i]),
                   SizedBox(width: 8.0),
                 ],
               ),
@@ -106,7 +104,7 @@ class _CardSectionState extends State<CardSection> {
 class CardInformation extends StatefulWidget {
   final String title;
   final bool isScrolling;
-  final String color;
+  final Color color;
   final String description;
   final IconData icon;
   final Function(bool) ontap;
@@ -131,17 +129,17 @@ class _CardInformationState extends State<CardInformation> {
         height: 150.0,
         width: 130.0,
         decoration: BoxDecoration(
-            color: config.convertColor(widget.color),
-            borderRadius: BorderRadius.circular(12.0),
-            boxShadow: [
-              BoxShadow(
-                  color: Colors.black45, blurRadius: 3.0, spreadRadius: 1.0)
-            ]),
+          color: widget.color,
+          borderRadius: BorderRadius.circular(12.0),
+          //boxShadow: [
+            //BoxShadow(color: Colors.black45, blurRadius: 3.0, spreadRadius: 1.0)
+          //],
+        ),
         child: Center(
           child: Icon(
             widget.icon,
             size: 54.0,
-            color: Colors.white,
+            color: Colors.black,
           ),
         ),
       ),
@@ -177,7 +175,7 @@ class _CardInformationState extends State<CardInformation> {
                     MaterialPageRoute(
                         builder: (context) => ListProducts(
                               title: widget.title,
-                              color: config.convertColor(widget.color),
+                              color: widget.color,
                             ))),
                 child: Text(
                   'Descubrir',

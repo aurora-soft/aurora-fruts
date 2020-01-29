@@ -88,7 +88,7 @@ class CardElementCategories extends StatelessWidget {
         child: Center(
           child: Text('${title[0].toUpperCase()}${title.substring(1)}',
               textAlign: TextAlign.center,
-              style: TextStyle(color: Colors.white, fontSize: 15.0)),
+              style: TextStyle(color: Colors.black, fontSize: 15.0)),
         ),
       ),
     );

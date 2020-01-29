@@ -104,17 +104,7 @@ class _SchedulePageState extends State<SchedulePage> {
         mainAxisSize: MainAxisSize.max,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Row(
-            children: <Widget>[
-              IconButton(
-                onPressed: () => Navigator.pop(context),
-                icon: Icon(Icons.arrow_back_ios),
-                color: Colors.black,
-              ),
-              SizedBox(width: 8.0),
-              TitlesBar(h1: 'Mi', h2: 'Calendario'),
-            ],
-          ),
+          TitlesBar(h1: 'Mi', h2: 'Calendario'),
           _listSchedule(context),
           Expanded(child: _buildEventList())
         ],

@@ -11,30 +11,30 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^0.1.2
   table_calendar: ^2.2.2
+  provider: ^4.0.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
 flutter:
-
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
   assets:
-   - assets/images/fruits.jpg
+    - assets/images/fruits.jpg
 
   fonts:
     - family: SectionIcons
       fonts:
         - asset: assets/fonts/section_menu.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
+    #       - asset: fonts/Schyler-Italic.ttf
+    #         style: italic
     - family: Helvetica
       fonts:
         - asset: assets/fonts/Helvetica.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
+    #       - asset: fonts/TrajanPro_Bold.ttf
+    #         weight: 700
     - family: DetailsDescriptionIcons
       fonts:
         - asset: assets/fonts/details_description.ttf

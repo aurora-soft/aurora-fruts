@@ -24,7 +24,6 @@ Product productExample1 = Product(
   labels: ['jugo', 'destilado', 'bebida caliente'],
   ingredients: ['pulpa de manzana', 'azucar', 'canela', 'agua'],
   images: [
-    'https://masvaletener.com/wp-content/uploads/2016/01/te-de-manzana-beneficios.jpg',
     'http://ajuaa.com/wp-content/uploads/2018/10/jugo_manzana.jpg',
   ],
 );
@@ -50,7 +49,7 @@ Product productExample2 = Product(
     'avellana'
   ],
   images: [
-    'https://www.enmicocinahoy.cl/wp-content/uploads/2013/02/galletas-avena-pasas-1024x708.jpg',
+    'https://images-gmi-pmc.edge-generalmills.com/d250d157-1974-4dc8-9b43-3f3889f53a52.jpg',
   ],
 );
 
@@ -113,7 +112,7 @@ Product productExample5 = Product(
   ],
   observer: 'Delicious Food',
   images: [
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqxxkyS2yrosF6ZYiu7ZbcDirtS50VOJ9lGMgdJgE-hl-zWzpW6Q&s',
+    'https://t2.rg.ltmcdn.com/es/images/1/7/3/img_ensalada_de_frutas_26371_600.jpg',
   ],
 );
 
@@ -136,7 +135,7 @@ Product productExample6 = Product(
   ],
   observer: 'Delicious Food',
   images: [
-    'https://ensaladafrutas.com/wp-content/uploads/2017/11/17.-ensalada-de-fruta-peruana.jpg',
+    'https://cheforopeza.com.mx/wp-content/uploads/2017/11/ensalada-yogurt-web.jpg',
   ],
 );
 

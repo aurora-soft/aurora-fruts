@@ -34,14 +34,14 @@ List<IconData> iconCardSection = [
 ];
 
 List<Color> colorsCategoriesCards = [
-  Colors.red[800],
-  Colors.blue[800],
-  Colors.amber[800],
-  Colors.green[800],
-  Colors.orange[800],
-  Colors.purple[800],
-  Colors.brown[800],
-  Colors.teal[800],
+  Colors.red.withOpacity(0.2),
+  Colors.blue.withOpacity(0.2),
+  Colors.amber.withOpacity(0.2),
+  Colors.green.withOpacity(0.2),
+  Colors.orange.withOpacity(0.2),
+  Colors.purple.withOpacity(0.2),
+  Colors.brown.withOpacity(0.2),
+  Colors.teal.withOpacity(0.2),
 ];
 
 List<String> titlesCategories = [

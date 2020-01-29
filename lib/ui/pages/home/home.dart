@@ -1,6 +1,6 @@
+import 'package:aurora_fruts/ui/pages/schedule/schedule.page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import '../../../data/constants.dart' as constant;
 import '../../../data/example/card_section.dart' as section;
 import '../../../utils/config.dart' as config;
@@ -10,47 +10,90 @@ import '../profile/profile.dart';
 import 'widgets/cards_section.dart';
 import 'widgets/cards_section_categories.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
+  @override
+  _HomeState createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  CupertinoTabController _tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = CupertinoTabController(initialIndex: 2);
+  }
+
+  Future<bool> _onWillPop() async {
+    return (await showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return CupertinoAlertDialog(
+                title: new Text("Salir"),
+                content: new Text("Estas seguro que deseas salir"),
+                actions: <Widget>[
+                  CupertinoDialogAction(
+                    onPressed: () => Navigator.of(context).pop(true),
+                    child: Text("Si"),
+                  ),
+                  CupertinoDialogAction(
+                    onPressed: () => Navigator.of(context).pop(false),
+                    child: Text("No"),
+                  )
+                ],
+              );
+            })) ??
+        false;
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: CupertinoTheme(
-        data: CupertinoThemeData(
-            primaryColor: config.convertColor(constant.colors['primary'])),
-        child: CupertinoTabScaffold(
-          tabBar: CupertinoTabBar(
-            backgroundColor: CupertinoColors.white,
-            items: [
-              for (int i = 0; i < constant.iconsNavigationBar.length; i++)
-                BottomNavigationBarItem(
-                    icon: Icon(constant.iconsNavigationBar[i]),
-                    title: Text(constant.textNavigationBar[i]))
-            ],
+    return WillPopScope(
+      onWillPop: _onWillPop,
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        body: CupertinoTheme(
+          data: CupertinoThemeData(
+              primaryColor: config.convertColor(constant.colors['primary'])),
+          child: CupertinoTabScaffold(
+            controller: _tabController,
+            tabBar: CupertinoTabBar(
+              border: Border(top: BorderSide(color: Colors.grey[300])),
+              backgroundColor: CupertinoColors.white,
+              items: [
+                for (int i = 0; i < constant.iconsNavigationBar.length; i++)
+                  BottomNavigationBarItem(
+                      icon: Icon(constant.iconsNavigationBar[i]),
+                      title: Text(constant.textNavigationBar[i]))
+              ],
+            ),
+            tabBuilder: (context, index) {
+              return CupertinoTabView(
+                builder: (context) {
+                  switch (index) {
+                    case 0:
+                      return SchedulePage();
+                      break;
+                    case 1:
+                      return CartView();
+                      break;
+                    case 2:
+                      return HomeContent();
+                      break;
+                    case 3:
+                      return Favorites();
+                      break;
+                    case 4:
+                      return ProfileView();
+                      break;
+                    default:
+                      return Container();
+                      break;
+                  }
+                },
+              );
+            },
           ),
-          tabBuilder: (context, index) {
-            return CupertinoTabView(
-              builder: (context) {
-                switch (index) {
-                  case 0:
-                    return HomeContent();
-                    break;
-                  case 1:
-                    return Favorites();
-                    break;
-                  case 2:
-                    return CartView();
-                    break;
-                  case 3:
-                    return ProfileView();
-                    break;
-                  default:
-                    return Container();
-                    break;
-                }
-              },
-            );
-          },
         ),
       ),
     );
@@ -106,8 +149,7 @@ class HomeContent extends StatelessWidget {
             gradient: LinearGradient(colors: [
               Colors.transparent,
               Colors.white.withOpacity(0.5),
-              Colors.white.withOpacity(0.7),
-              Colors.white.withOpacity(0.8),
+              Colors.white.withOpacity(0.6),
               Colors.white
             ], begin: Alignment.topCenter, end: Alignment.bottomCenter),
           ),
@@ -142,8 +184,9 @@ class HomeContent extends StatelessWidget {
             SizedBox(height: MediaQuery.of(context).padding.top),
             SizedBox(height: 165.0),
             Container(
+              color: Colors.white,
               width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height - 78.0 - 166,
+              height: MediaQuery.of(context).size.height - 78.0 - 164.7,
               child: SingleChildScrollView(
                 physics: BouncingScrollPhysics(),
                 scrollDirection: Axis.vertical,
@@ -158,7 +201,7 @@ class HomeContent extends StatelessWidget {
                         CardSection(
                           icon: section.iconCardSection[i],
                           title: section.cardsSectionTitles[i],
-                          color: section.colorsListCards[i % 4],
+                          color: Theme.of(context).primaryColor,
                           description: section.informationCardsSection[i],
                         )
                   ],

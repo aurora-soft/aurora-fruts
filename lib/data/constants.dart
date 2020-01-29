@@ -13,15 +13,17 @@ const List<IconData> iconsNavigationBar = [
   //CupertinoIcons.folder,
   //CupertinoIcons.folder,
   //CupertinoIcons.person
+  Icons.calendar_today,
+  Icons.shopping_cart,
   Icons.home,
   Icons.favorite,
-  Icons.shopping_cart,
   Icons.person
 ];
 
 const List<String> textNavigationBar = [
+  "Planificación",
+  "Carrito",
   "Inicio",
   "Favoritos",
-  "Carrito",
   "Mi cuenta"
 ];
