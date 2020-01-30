@@ -1,64 +1,35 @@
 import 'package:aurora_fruts/models/cart.dart';
 import 'package:aurora_fruts/models/product.dart';
 import 'package:aurora_fruts/ui/common_widgets/cart.widget.dart';
-import 'package:aurora_fruts/ui/common_widgets/titlesBar.dart';
 import 'package:flutter/material.dart';
 import 'package:aurora_fruts/data/example/cart_example.dart' as carex;
-
+import 'package:aurora_fruts/ui/templates/section_base.dart' as sectionBase;
 import '../../../data/example/card.example.dart' as Cards;
+import 'package:aurora_fruts/ui/common_widgets/buttons.dart' as buttons;
+import 'package:aurora_fruts/ui/pages/payment/business_logic.dart/business_logic.dart'
+    as blpayment;
 
 class PaymentPage extends StatelessWidget {
   final Cart cartExample = carex.carrito;
   final _cards = Cards.listCards;
 
-  final _textSubtitle = TextStyle(
-    color: Colors.black54,
-  );
-
-  final _textSubtitle2 = TextStyle(
-    color: Colors.black87,
-    fontSize: 16.0,
-  );
-  final _textSubtitle3 = TextStyle(
-    color: Colors.black87,
-    fontSize: 18.0,
-    fontWeight: FontWeight.w600,
-  );
-
-  double _getPrice(Product product, int quantity) {
-    double _discount =
-        product.discount != null ? product.discount : product.price;
-    double result = quantity * _discount;
-    return result;
-  }
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: true,
-        backgroundColor: Colors.white,
-        elevation: 0.0,
-        centerTitle: true,
-        title: TitlesBar(h1: 'Pagos', h2: ''),
-        iconTheme: IconThemeData(color: Colors.black54),
-      ),
-      backgroundColor: Colors.white,
-      body: Container(
-        height: MediaQuery.of(context).size.height,
-        padding: EdgeInsets.only(
-            right: 16.0,
-            left: 16.0,
-            top: MediaQuery.of(context).padding.top + 24.0),
-        // color: Colors.grey[100],
-        child: Column(
-          children: <Widget>[
-            _listCards(),
-            _summary(context),
-            Spacer(),
-            _confirmationButton(context),
-          ],
-        ),
+    return sectionBase.SectionBase(
+      subtitle: 'Pagos',
+      backButton: true,
+      title: '',
+      body: Column(
+        children: <Widget>[
+          _listCards(),
+          _summary(context),
+          SizedBox(height: 32.0),
+          buttons.ButtonBase(
+            title: 'Pagar Orden',
+            onTap: () => Navigator.push(context,
+                MaterialPageRoute(builder: (context) => PaymentPage())),
+          ),
+        ],
       ),
     );
   }
@@ -128,37 +99,10 @@ class PaymentPage extends StatelessWidget {
           imageLink: _products[item].images[0],
           name: _products[item].name,
           quantity: _cantidades[item],
-          price: _getPrice(_products[item], _cantidades[item]),
+          price: blpayment.getPrice(_products[item], _cantidades[item]),
           includeImage: false,
         );
       },
-    );
-  }
-
-  Widget _confirmationButton(BuildContext context) {
-    return GestureDetector(
-      onTap: () => Navigator.push(
-          context, MaterialPageRoute(builder: (context) => PaymentPage())),
-      child: Container(
-        height: 50.0,
-        width: MediaQuery.of(context).size.width - 32,
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8.0),
-            color: Theme.of(context).accentColor.withOpacity(0.9),
-            boxShadow: [
-              BoxShadow(
-                  color: Colors.grey[400], blurRadius: 5.0, spreadRadius: 2.0)
-            ]),
-        child: Center(
-          child: Text(
-            'Pagar Orden',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 18.0,
-            ),
-          ),
-        ),
-      ),
     );
   }
 }

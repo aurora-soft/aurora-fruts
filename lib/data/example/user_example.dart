@@ -33,7 +33,7 @@ List<IconData> iconsMenu = [
 ];
 
 List<Widget> navigation = [
-  Favorites(activate: true,),
+  Favorites(),
   Container(),
   Container(),
   Container(),

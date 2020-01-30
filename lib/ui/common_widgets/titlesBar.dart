@@ -10,12 +10,14 @@ class TitlesBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return RichText(
       text: TextSpan(style: DefaultTextStyle.of(context).style, children: [
-        TextSpan(
-            text: '$h1\n',
-            style: TextStyle(
-                color: Colors.black,
-                fontSize: 32.0,
-                fontWeight: FontWeight.bold)),
+        h1 != ''
+            ? TextSpan(
+                text: '$h1\n',
+                style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 32.0,
+                    fontWeight: FontWeight.bold))
+            : TextSpan(text: ''),
         TextSpan(
             text: '$h2',
             style: TextStyle(

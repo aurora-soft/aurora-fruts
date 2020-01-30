@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-
-import '../../common_widgets/titlesBar.dart';
 import 'package:table_calendar/table_calendar.dart';
+import 'package:aurora_fruts/ui/templates/section_base.dart' as baseTemplate;
+import 'package:aurora_fruts/data/example/events_example.dart' as eventsExample;
 
 class SchedulePage extends StatefulWidget {
   @override
@@ -18,69 +18,7 @@ class _SchedulePageState extends State<SchedulePage> {
     super.initState();
     _calendarController = CalendarController();
     final _selectedDay = DateTime.now();
-
-    _events = {
-      _selectedDay.subtract(Duration(days: 30)): [
-        'Ensalada de Frutas',
-        'Paquete de Almendras',
-        'Manzanas Deshidratadas'
-      ],
-      _selectedDay.subtract(Duration(days: 19)): [
-        'Ciruelas Frescas',
-      ],
-      _selectedDay.subtract(Duration(days: 18)): [
-        'Zumo de Zanahoria',
-        'Sandwich de Palta',
-      ],
-      _selectedDay.subtract(Duration(days: 11)): [
-        'Zumo de Naranja',
-        'Sandwich de atún',
-      ],
-      _selectedDay.subtract(Duration(days: 10)): [
-        'Zumo de Manzana',
-        'Galletas de Avena',
-      ],
-      _selectedDay.subtract(Duration(days: 3)): [
-        'Zumo de Frutos Rojos',
-        'Galletas de Avena',
-      ],
-      _selectedDay.subtract(Duration(days: 2)): [
-        'Zumo de Piña',
-      ],
-      _selectedDay: [
-        'Ensalada de frutas',
-      ],
-      _selectedDay.add(Duration(days: 1)): [
-        'Zumo de Zanahoria',
-        'Sandwich de Palta',
-      ],
-      _selectedDay.add(Duration(days: 2)): Set.from([
-        'Ensalada de Frutas',
-        'Paquete de Almendras',
-        'Manzanas Deshidratadas'
-      ]).toList(),
-      _selectedDay.add(Duration(days: 7)): [
-        'Zumo de Manzana',
-        'Galletas de Avena',
-      ],
-      _selectedDay.add(Duration(days: 8)): [
-        'Zumo de Manzana',
-        'Galletas de Avena',
-      ],
-      _selectedDay.add(Duration(days: 15)): [
-        'Zumo de Manzana',
-        'Galletas de Avena',
-      ],
-      _selectedDay.add(Duration(days: 16)): [
-        'Zumo de Manzana',
-        'Galletas de Avena',
-      ],
-      _selectedDay.add(Duration(days: 20)): [
-        'Zumo de Manzana',
-        'Galletas de Avena',
-      ],
-    };
-
+    _events = eventsExample.events;
     _selectedEvents = _events[_selectedDay] ?? [];
   }
 
@@ -92,19 +30,11 @@ class _SchedulePageState extends State<SchedulePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: MediaQuery.of(context).size.height,
-      width: MediaQuery.of(context).size.width,
-      padding: EdgeInsets.only(
-          right: 16.0,
-          left: 16.0,
-          top: MediaQuery.of(context).padding.top + 24.0),
-      color: Colors.white,
-      child: Column(
-        mainAxisSize: MainAxisSize.max,
-        crossAxisAlignment: CrossAxisAlignment.start,
+    return baseTemplate.SectionBase(
+      title: 'Mi',
+      subtitle: 'Calendario',
+      body: Column(
         children: <Widget>[
-          TitlesBar(h1: 'Mi', h2: 'Calendario'),
           _listSchedule(context),
           Expanded(child: _buildEventList())
         ],
@@ -120,12 +50,10 @@ class _SchedulePageState extends State<SchedulePage> {
         builders: CalendarBuilders(
           markersBuilder: (context, date, events, holidays) {
             final children = <Widget>[];
-
             if (events.isNotEmpty) {
               children.add(
                 Positioned(
-                  left: 2,
-                  bottom: 2,
+                  bottom: 0,
                   child: _buildEventsMarker(date, events),
                 ),
               );
@@ -137,21 +65,20 @@ class _SchedulePageState extends State<SchedulePage> {
 
   Widget _buildEventsMarker(DateTime date, List events) {
     List<Widget> l = [];
-
     if (events.isNotEmpty) {
       for (var item in events) {
         l.add(Container(
-          width: 6,
-          height: 6,
+          margin: EdgeInsets.only(left: 1.0),
+          width: 5,
+          height: 5,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8),
             color: Colors.black54,
           ),
         ));
       }
-
       return Container(
-        child: Row(children: l),
+        child: Row(mainAxisAlignment: MainAxisAlignment.center, children: l),
       );
     }
   }
@@ -159,6 +86,7 @@ class _SchedulePageState extends State<SchedulePage> {
   Widget _buildEventList() {
     return Container(
       child: ListView(
+        shrinkWrap: true,
         children: _selectedEvents
             .map((event) => Container(
                   decoration: BoxDecoration(
@@ -179,7 +107,6 @@ class _SchedulePageState extends State<SchedulePage> {
   }
 
   void _onDaySelected(DateTime day, List events) {
-    print('CALLBACK: _onDaySelected');
     setState(() {
       _selectedEvents = events;
     });

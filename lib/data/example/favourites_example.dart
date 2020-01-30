@@ -1,7 +1,7 @@
 import 'package:aurora_fruts/models/favourites.dart';
 import 'package:aurora_fruts/data/example/products.dart';
 
-Favourites favourites1 = Favourites(
+Favourites _favourites1 = Favourites(
   name: 'favoritos',
   tag: 'preferidos por mi',
   productos: {
@@ -10,7 +10,7 @@ Favourites favourites1 = Favourites(
   },
 );
 
-Favourites favourites2 = Favourites(
+Favourites _favourites2 = Favourites(
   name: 'saludables y organicos',
   tag: 'frutos secos y mas',
   productos: {
@@ -20,7 +20,7 @@ Favourites favourites2 = Favourites(
   },
 );
 
-Favourites favourites3 = Favourites(
+Favourites _favourites3 = Favourites(
   name: 'bebidas deliciosas',
   tag: 'bebidas para acompañar',
   productos: {
@@ -29,4 +29,4 @@ Favourites favourites3 = Favourites(
   },
 );
 
-List<Favourites> listFavourites = [favourites1, favourites2, favourites3];
+List<Favourites> listFavourites = [_favourites1, _favourites2, _favourites3];

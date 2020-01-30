@@ -1,14 +1,9 @@
-import 'package:aurora_fruts/models/favourites.dart';
-import 'package:aurora_fruts/ui/pages/favourites/widgets/card_list.dart';
 import 'package:flutter/material.dart';
-import 'package:aurora_fruts/ui/common_widgets/titlesBar.dart';
+import 'package:aurora_fruts/ui/templates/section_base.dart' as sectionBase;
 import 'package:aurora_fruts/data/example/favourites_example.dart' as fex;
+import 'package:aurora_fruts/ui/pages/favourites/widgets/favourite_list.dart' as favlist;
 
 class Favorites extends StatelessWidget {
-  static List<Favourites> _lists = fex.listFavourites;
-
-  final bool activate;
-  Favorites({this.activate = false});
 
   Widget _addListsButton(BuildContext context) {
     return InkWell(
@@ -34,7 +29,7 @@ class Favorites extends StatelessWidget {
   Widget _search(BuildContext context) {
     //TODO: change to search function
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 8.0),
+      margin: EdgeInsets.only(bottom: 36.0),
       padding: EdgeInsets.all(8.0),
       decoration: BoxDecoration(
           color: Colors.white,
@@ -58,39 +53,17 @@ class Favorites extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: MediaQuery.of(context).size.height,
-      width: MediaQuery.of(context).size.width,
-      padding: EdgeInsets.only(
-          right: 16.0,
-          left: 16.0,
-          top: MediaQuery.of(context).padding.top + 24.0),
-      color: Colors.white,
-      child: SingleChildScrollView(
+    return sectionBase.SectionBase(
+      title: 'Mis',
+      subtitle: 'Favoritos',
+      body: SingleChildScrollView(
         physics: BouncingScrollPhysics(),
+        scrollDirection: Axis.vertical,
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Row(
-              children: <Widget>[
-                activate
-                    ? IconButton(
-                        onPressed: () => Navigator.pop(context),
-                        icon: Icon(Icons.arrow_back_ios),
-                        color: Colors.black,
-                      )
-                    : SizedBox(),
-                SizedBox(width: activate ? 8.0 : 0.0),
-                TitlesBar(h1: 'Mis', h2: 'Favoritos'),
-              ],
-            ),
-            Padding(
-                padding: const EdgeInsets.symmetric(vertical: 32.0),
-                child: _search(context)),
+            _search(context),
             _addListsButton(context),
-            SizedBox(height: 28.0),
-            for (int i = 0; i < _lists.length; i++)
-              CardList(favourite: _lists[i])
+            favlist.FavouriteList(lists: fex.listFavourites,)
           ],
         ),
       ),
