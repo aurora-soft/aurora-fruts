@@ -5,10 +5,12 @@ import 'package:flutter/material.dart';
 class CardElement extends StatelessWidget {
   final Color color;
   final Product product;
-  CardElement({this.color, this.product});
+  final String id;
+  CardElement({this.color, this.product,this.id});
   @override
   Widget build(BuildContext context) {
     return Container(
+      key: Key(id),
       width: 110.0,
       margin: EdgeInsets.only(right: 8.0),
       child: InkWell(
@@ -30,7 +32,7 @@ class CardElement extends StatelessWidget {
               child: ClipRRect(
                   borderRadius: BorderRadius.circular(8.0),
                   child: Image.network(
-                    product.images[0],
+                    product.photos[0],
                     fit: BoxFit.cover,
                   )),
             ),

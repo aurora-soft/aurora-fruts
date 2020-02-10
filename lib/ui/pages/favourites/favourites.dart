@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:aurora_fruts/ui/templates/section_base.dart' as sectionBase;
-import 'package:aurora_fruts/data/example/favourites_example.dart' as fex;
 import 'package:aurora_fruts/ui/pages/favourites/widgets/favourite_list.dart' as favlist;
 
-class Favorites extends StatelessWidget {
+class Favorites extends StatefulWidget {
 
+  @override
+  _FavoritesState createState() => _FavoritesState();
+}
+
+class _FavoritesState extends State<Favorites> {
+  
   Widget _addListsButton(BuildContext context) {
     return InkWell(
       onTap: () {
@@ -63,7 +68,8 @@ class Favorites extends StatelessWidget {
           children: <Widget>[
             _search(context),
             _addListsButton(context),
-            favlist.FavouriteList(lists: fex.listFavourites,)
+            //TODO: add the firebase list
+            favlist.FavouriteList()
           ],
         ),
       ),

@@ -1,6 +1,6 @@
 import 'package:aurora_fruts/ui/pages/categories/widgets/categorie_card.dart'as card;
 import 'package:flutter/material.dart';
-import 'package:aurora_fruts/data/example/card_section.dart' as section;
+import 'package:aurora_fruts/data/config_app/card_section.dart' as section;
 import 'package:aurora_fruts/ui/templates/section_base.dart'as sectionBase;
 
 class Categories extends StatelessWidget {

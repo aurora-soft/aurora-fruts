@@ -2,7 +2,7 @@ import 'package:aurora_fruts/ui/pages/schedule/schedule.page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../../data/constants.dart' as constant;
-import '../../../data/example/card_section.dart' as section;
+import '../../../data/config_app/card_section.dart' as section;
 import '../../../utils/config.dart' as config;
 import '../cart/cart.dart';
 import '../favourites/favourites.dart';

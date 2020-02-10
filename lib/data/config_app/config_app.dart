@@ -1,18 +1,7 @@
-import 'package:aurora_fruts/models/user.dart';
 import 'package:aurora_fruts/ui/pages/favourites/favourites.dart';
 import 'package:flutter/material.dart';
 
-User user = User(
-    nickName: 'Louella Andrews',
-    email: 'louella.andrews@example.com',
-    tagProfile: 'nomada digital',
-    nroOrders: 114,
-    points: 215,
-    telephone: '(591)77723937',
-    imageProfile:
-        "https://laboratoriosniam.com/wp-content/uploads/2018/07/michael-dam-258165-unsplash_WEB2.jpg");
-
-List<String> menuTags = [
+const List<String> menuTags = [
   'Mis listas',
   'Billetera',
   'Amigos',
@@ -22,7 +11,7 @@ List<String> menuTags = [
   'Acerca de',
 ];
 
-List<IconData> iconsMenu = [
+const List<IconData> iconsMenu = [
   Icons.favorite,
   Icons.credit_card,
   Icons.people,
@@ -40,4 +29,10 @@ List<Widget> navigation = [
   Container(),
   Container(),
   Container()
+];
+
+List<IconData> iconCardSection = [
+  IconData(0xe902, fontFamily: 'DetailsDescriptionIcons'),
+  IconData(0xe901, fontFamily: 'DetailsDescriptionIcons'),
+  IconData(0xe900, fontFamily: 'DetailsDescriptionIcons'),
 ];

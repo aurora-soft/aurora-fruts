@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "424023324677",
+    "firebase_url": "https://ametis-food.firebaseio.com",
+    "project_id": "ametis-food",
+    "storage_bucket": "ametis-food.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:424023324677:android:15061d86e3332bc3bd446c",
+        "android_client_info": {
+          "package_name": "bo.aurora.ametis_food"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "424023324677-avj7qld5vjrffpjm3ipjm1ckeeuv2jhk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "bo.aurora.ametis_food",
+            "certificate_hash": "4f9175cc9760a66f5acaec65c6a9cdc18a8f2843"
+          }
+        },
+        {
+          "client_id": "424023324677-qubkldkode29evd8fvejc4n5plp4j154.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHifzmse5yOUOASBoXB8pNyJgsuDdtQ_Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "424023324677-qubkldkode29evd8fvejc4n5plp4j154.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

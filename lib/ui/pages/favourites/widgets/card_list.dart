@@ -1,9 +1,9 @@
-import 'package:aurora_fruts/models/favourites.dart';
+import 'package:aurora_fruts/models/collection.dart';
 import 'package:aurora_fruts/models/product.dart';
 import 'package:flutter/material.dart';
 
 class CardList extends StatelessWidget {
-  final Favourites favourite;
+  final Collection favourite;
   CardList({this.favourite});
 
   Widget _image(String link) {
@@ -20,14 +20,14 @@ class CardList extends StatelessWidget {
   }
 
   Widget _listImages(BuildContext context) {
-    List<Product> _productList = favourite.productos.values.toList();
+    List<Product> _productList = favourite.products;
     return Padding(
       padding: EdgeInsets.only(top: 16.0, bottom: 8.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
           for (int i = 0; i < _productList.length; i++)
-            _image(_productList[i].images[0])
+            _image(_productList[i].photos[0])
         ],
       ),
     );
@@ -71,7 +71,7 @@ class CardList extends StatelessWidget {
                             fontSize: 20.0,
                             fontWeight: FontWeight.bold)),
                     TextSpan(
-                        text: '+${favourite.productos.length}\t\t',
+                        text: '+${favourite.products.length}\t\t',
                         style: TextStyle(
                             color: Colors.grey[600],
                             fontSize: 32.0,

@@ -22,20 +22,6 @@ class _PresentationProductState extends State<PresentationProduct> {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Align(
-            alignment: Alignment.center,
-            child: RotatedBox(
-              quarterTurns: -1,
-              child: Text(
-                '${widget.product.weight}',
-                style: TextStyle(
-                    color: Colors.grey[400],
-                    fontWeight: FontWeight.bold,
-                    fontSize: 24.0),
-              ),
-            ),
-          ),
-          SizedBox(width: 8.0),
           ClipRRect(
             borderRadius: BorderRadius.circular(35),
             child: Stack(children: [
@@ -43,7 +29,7 @@ class _PresentationProductState extends State<PresentationProduct> {
                 height: 200.0,
                 width: 250.0,
                 child: Image.network(
-                  widget.product.images[0],
+                  widget.product.photos[0],
                   fit: BoxFit.cover,
                 ),
               ),
@@ -166,13 +152,13 @@ class Rating extends StatelessWidget {
             style: DefaultTextStyle.of(context).style,
             children: <TextSpan>[
               TextSpan(
-                  text: product.discount != null
-                      ? 'Bs. ${product.discount}\t'
+                  text: product.discountPercent != null
+                      ? 'Bs. ${product.price- (product.discountPercent*product.price)}\t'
                       : 'Bs. ${product.price}\t',
                   style:
                       TextStyle(fontWeight: FontWeight.bold, fontSize: 28.0)),
               TextSpan(
-                  text: product.discount != null ? '${product.price}' : '',
+                  text: product.discountPercent != null ? '${product.price}' : '',
                   style: TextStyle(
                       color: Colors.redAccent,
                       fontSize: 16.0,

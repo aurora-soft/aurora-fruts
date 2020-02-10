@@ -16,7 +16,7 @@ class MainInformation extends StatelessWidget {
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(100.0),
               image: DecorationImage(
-                  image: NetworkImage(user.imageProfile), fit: BoxFit.cover)),
+                  image: NetworkImage(user.photo), fit: BoxFit.cover)),
         ),
         SizedBox(width: 32.0),
         Column(
@@ -52,7 +52,7 @@ class MainInformation extends StatelessWidget {
         children: <Widget>[
           _pictureInformation(),
           SizedBox(height: 16.0),
-          _informationAditional(icon: Icons.phone, data: user.telephone),
+          _informationAditional(icon: Icons.phone, data: user.phone),
           SizedBox(height: 8.0),
           _informationAditional(icon: Icons.mail, data: user.email),
         ],

@@ -1,14 +1,16 @@
+import 'package:aurora_fruts/data/provider/cart_provider.dart';
 import 'package:aurora_fruts/models/cart.dart';
 import 'package:aurora_fruts/models/product.dart';
 import 'package:aurora_fruts/ui/pages/payment/payment.page.dart';
 import 'package:flutter/material.dart';
-import 'package:aurora_fruts/data/example/cart_example.dart' as carex;
 import 'package:aurora_fruts/ui/templates/section_base.dart' as sectionBase;
 import 'package:aurora_fruts/ui/common_widgets/buttons.dart' as buttons;
 import 'package:aurora_fruts/ui/pages/cart/widgets/list_itemCart.dart'
     as listItems;
 import 'package:aurora_fruts/ui/pages/cart/business_logic/business_logic.dart'
     as blCart;
+import 'package:provider/provider.dart';
+import 'package:aurora_fruts/ui/common_widgets/messages.dart' as messages;
 
 class CartView extends StatefulWidget {
   @override
@@ -16,7 +18,7 @@ class CartView extends StatefulWidget {
 }
 
 class _CartViewState extends State<CartView> {
-  final Cart cartExample = carex.carrito;
+  Cart cart;
 
   double total;
 
@@ -63,6 +65,29 @@ class _CartViewState extends State<CartView> {
     );
   }
 
+  Widget _body() {
+    final cartProvider = Provider.of<CartProvider>(context, listen: false);
+    List<Product> products;
+    List<int> cantidades;
+    try {
+      products = cartProvider.cart.productList.keys.toList();
+      cantidades = cartProvider.cart.productList.values.toList();
+    } catch (Exceptione) {}
+    if (cartProvider.cart.productList.length <= 0) {
+      return messages.Message(
+        message: 'no hay elementos\nen el carrito',
+      );
+    } else {
+      return Column(
+        children: <Widget>[
+          listItems.ListItemCart(cart: cart),
+          SizedBox(height: 32.0),
+          _totalPrice(products: products, cantidades: cantidades),
+        ],
+      );
+    }
+  }
+
   @override
   void initState() {
     super.initState();
@@ -71,36 +96,30 @@ class _CartViewState extends State<CartView> {
 
   @override
   Widget build(BuildContext context) {
-    List<Product> products = cartExample.productList.keys.toList();
-    List<int> cantidades = cartExample.productList.values.toList();
-
     return sectionBase.SectionBase(
-      title: 'Mi',
-      subtitle: 'Orden',
-      body: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Column(
-          children: <Widget>[
-            listItems.ListItemCart(cart: cartExample),
-            SizedBox(height: 32.0),
-            _totalPrice(products: products, cantidades: cantidades),
-            SizedBox(height: 32.0),
-            buttons.ButtonBase(
-              title: 'Confirmar Orden',
-              onTap: () => Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => PaymentPage())),
-            ),
-            SizedBox(height: 6.0),
-            buttons.ButtonBase(
-              title: 'Planear Entregas',
-              onTap: () {
-                //TODO: change index tab bar
-              },
-            ),
-            _usePoints()
-          ],
-        ),
-      ),
-    );
+        title: 'Mi',
+        subtitle: 'Orden',
+        body: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Column(
+            children: <Widget>[
+              _body(),
+              SizedBox(height: 32.0),
+              buttons.ButtonBase(
+                title: 'Confirmar Orden',
+                onTap: () => Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => PaymentPage())),
+              ),
+              SizedBox(height: 6.0),
+              buttons.ButtonBase(
+                title: 'Planear Entregas',
+                onTap: () {
+                  //TODO: change index tab bar
+                },
+              ),
+              _usePoints()
+            ],
+          ),
+        ));
   }
 }

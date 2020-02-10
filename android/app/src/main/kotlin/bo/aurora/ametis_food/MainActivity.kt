@@ -1,4 +1,4 @@
-package com.example.aurora_fruts
+package bo.aurora.ametis_food
 
 import android.os.Bundle
 

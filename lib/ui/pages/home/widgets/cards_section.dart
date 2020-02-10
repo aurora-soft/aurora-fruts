@@ -1,7 +1,6 @@
 import 'package:aurora_fruts/ui/common_widgets/card_element.dart';
 import 'package:aurora_fruts/ui/pages/list_products/list_products.dart';
 import 'package:flutter/material.dart';
-import 'package:aurora_fruts/data/example/products.dart' as proex;
 
 class CardSection extends StatefulWidget {
   final String description;
@@ -87,9 +86,6 @@ class _CardSectionState extends State<CardSection> {
                       icon: widget.icon,
                       ontap: (activate) =>
                           setState(() => isScrolling = activate)),
-                  for (int i = 0; i < proex.products.length; i++)
-                    CardElement(
-                        color: widget.color, product: proex.products[i]),
                   SizedBox(width: 8.0),
                 ],
               ),

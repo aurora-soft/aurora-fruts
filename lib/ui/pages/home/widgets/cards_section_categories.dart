@@ -1,7 +1,7 @@
 import 'package:aurora_fruts/ui/pages/categories/categories.dart';
 import 'package:aurora_fruts/ui/pages/list_products/list_products.dart';
 import 'package:flutter/material.dart';
-import 'package:aurora_fruts/data/example/card_section.dart' as section;
+import 'package:aurora_fruts/data/config_app/card_section.dart' as section;
 
 ///Card Section categories
 ///a [card section] especial for to show categories in app

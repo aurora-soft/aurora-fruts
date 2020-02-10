@@ -1,20 +1,24 @@
+import 'package:aurora_fruts/data/provider/cart_provider.dart';
 import 'package:aurora_fruts/models/cart.dart';
 import 'package:aurora_fruts/models/product.dart';
 import 'package:aurora_fruts/ui/common_widgets/cart.widget.dart';
 import 'package:flutter/material.dart';
-import 'package:aurora_fruts/data/example/cart_example.dart' as carex;
 import 'package:aurora_fruts/ui/templates/section_base.dart' as sectionBase;
+import 'package:provider/provider.dart';
 import '../../../data/example/card.example.dart' as Cards;
 import 'package:aurora_fruts/ui/common_widgets/buttons.dart' as buttons;
 import 'package:aurora_fruts/ui/pages/payment/business_logic.dart/business_logic.dart'
     as blpayment;
 
+Cart cart;
+
 class PaymentPage extends StatelessWidget {
-  final Cart cartExample = carex.carrito;
   final _cards = Cards.listCards;
 
   @override
   Widget build(BuildContext context) {
+    final cartProvider = Provider.of<CartProvider>(context);
+    cart = cartProvider.cart;
     return sectionBase.SectionBase(
       subtitle: 'Pagos',
       backButton: true,
@@ -88,20 +92,24 @@ class PaymentPage extends StatelessWidget {
   }
 
   Widget _summary(BuildContext context) {
-    List<Product> _products = cartExample.productList.keys.toList();
-    List<int> _cantidades = cartExample.productList.values.toList();
+    List<Product> _products = cart.productList.keys.toList();
+    List<int> _cantidades = cart.productList.values.toList();
     return ListView.builder(
       shrinkWrap: true,
       physics: NeverScrollableScrollPhysics(),
-      itemCount: carex.carrito.productList.length,
+      itemCount: _products.length,
       itemBuilder: (context, item) {
-        return ItemCart(
-          imageLink: _products[item].images[0],
-          name: _products[item].name,
-          quantity: _cantidades[item],
-          price: blpayment.getPrice(_products[item], _cantidades[item]),
-          includeImage: false,
-        );
+        if (cart.productList.length <= 0) {
+          return Center(child: Text('no items'));
+        } else {
+          return ItemCart(
+            imageLink: _products[item].photos[0],
+            name: _products[item].name,
+            quantity: _cantidades[item],
+            price: blpayment.getPrice(_products[item], _cantidades[item]),
+            includeImage: false,
+          );
+        }
       },
     );
   }

@@ -28,6 +28,7 @@ class _SchedulePageState extends State<SchedulePage> {
     super.dispose();
   }
 
+
   @override
   Widget build(BuildContext context) {
     return baseTemplate.SectionBase(
@@ -80,6 +81,8 @@ class _SchedulePageState extends State<SchedulePage> {
       return Container(
         child: Row(mainAxisAlignment: MainAxisAlignment.center, children: l),
       );
+    }else{
+      return Container();
     }
   }
 

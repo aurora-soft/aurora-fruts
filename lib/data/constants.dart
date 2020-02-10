@@ -9,10 +9,6 @@ Map<String, String> colors = {
   'tertiary': '#E8521E'
 };
 const List<IconData> iconsNavigationBar = [
-  //CupertinoIcons.home,
-  //CupertinoIcons.folder,
-  //CupertinoIcons.folder,
-  //CupertinoIcons.person
   Icons.calendar_today,
   Icons.shopping_cart,
   Icons.home,

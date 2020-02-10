@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:aurora_fruts/data/example/user_example.dart' as us;
+import 'package:aurora_fruts/data/config_app/config_app.dart' as config;
 
 class MenuItems extends StatelessWidget {
+
   Widget _menuElement(
       {IconData icon,
       String title,
@@ -32,11 +33,11 @@ class MenuItems extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        for (int j = 0; j < us.iconsMenu.length; j++)
+        for (int j = 0; j < config.iconsMenu.length; j++)
           _menuElement(
-              route: us.navigation[j],
-              icon: us.iconsMenu[j],
-              title: us.menuTags[j],
+              route: config.navigation[j],
+              icon: config.iconsMenu[j],
+              title: config.menuTags[j],
               context: context),
         Divider(color: Colors.grey),
         ListTile(

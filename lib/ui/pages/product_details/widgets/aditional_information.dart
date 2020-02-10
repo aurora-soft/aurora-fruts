@@ -2,7 +2,7 @@ import 'package:aurora_fruts/models/product.dart';
 import 'package:flutter/material.dart';
 import 'package:aurora_fruts/utils/config.dart' as config;
 import 'package:aurora_fruts/data/constants.dart' as constant;
-import 'package:aurora_fruts/data/example/details_description.dart' as details;
+import 'package:aurora_fruts/data/config_app/config_app.dart' as details;
 
 class AditionalInformation extends StatefulWidget {
   final Product product;
@@ -168,21 +168,8 @@ class Notes extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        Text(
-                          '${product.observer}',
-                          style: TextStyle(color: Colors.grey[900]),
-                        ),
-                        SizedBox(
-                          height: 12,
-                        ),
-                        Text(
-                          'Horarios de Entrega ',
-                          style: TextStyle(color: Colors.grey[600]),
-                        ),
-                        Text(
-                          '"${product.deliveryScheduale}"',
-                          style: TextStyle(color: Colors.grey[600]),
-                        ),
+                        //TODO: add details
+                        Text('Detalles')
                       ],
                     ),
                   ),
@@ -206,7 +193,7 @@ class Notes extends StatelessWidget {
 }
 
 class Ingredients extends StatelessWidget {
-  final List<String> ingredients;
+  final List<dynamic> ingredients;
   Ingredients({this.ingredients});
   @override
   Widget build(BuildContext context) {
@@ -226,7 +213,7 @@ class Ingredients extends StatelessWidget {
                       children: <Widget>[
                         for (int i = 0; i < ingredients.length; i++)
                           Text(
-                            "*\t\t${ingredients[i]}",
+                            "*\t\t${ingredients[i].toString()}",
                             style: TextStyle(
                                 color: Colors.grey[600],
                                 fontSize: 18.0,
