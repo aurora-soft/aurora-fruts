@@ -48,7 +48,7 @@ There are three ways to test BookShoot:
 
 
 # Team
-![alt text](https://github.com/aurora-soft/aurora-fruts/blob/master/logos/team.png)
+![alt text](https://github.com/aurora-soft/aurora-fruts/blob/master/logos/team-photo.png)
 
 | Executable  | Repository | Team | Description	|Licence |Authors|
 | ------------- | ----------- | ------------- | ----------------------- | ------------- | ------------- |
